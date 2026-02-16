@@ -1,0 +1,421 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
+
+const ServicesPage = () => {
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 60 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] }
+    }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.12, delayChildren: 0.2 }
+    }
+  };
+
+  const comparisonData = [
+    {
+      feature: "Delivery Model",
+      starter: "Sprint-Based Execution",
+      scale: "Quarterly Cadenced Execution",
+      coe: "Multi-Track Cadenced Execution + Strategic Advisory"
+    },
+    {
+      feature: "Team Composition",
+      starter: "1 AI Engineer + 1 Product Specialist",
+      scale: "2 AI Engineers + 1 Product Specialist + 1 Delivery Manager",
+      coe: "AI Engineers (3+) + Product Specialists (2+) + Delivery Manager + Strategic Advisor"
+    },
+    {
+      feature: "Engagement Cadence",
+      starter: "2-week sprints",
+      scale: "3-month blocks",
+      coe: "6–12 month roadmap"
+    },
+    {
+      feature: "Scope Type",
+      starter: "Single defined outcome",
+      scale: "Multiple integrated outcomes",
+      coe: "Organizational AI transformation"
+    },
+    {
+      feature: "Best For",
+      starter: "Targeted systems (e.g. chatbot, search, pipeline)",
+      scale: "Expanding AI capabilities across teams",
+      coe: "Building internal AI practices at scale"
+    }
+  ];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="bg-black min-h-screen"
+    >
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl animate-pulse" />
+          <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
+        </div>
+
+        <div className="relative z-10 max-w-6xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <p className="text-cyan-400 font-semibold mb-6 tracking-wider uppercase text-sm">Our Services</p>
+            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black mb-10 leading-tight">
+              <span className="bg-gradient-to-r from-white via-cyan-200 to-purple-300 bg-clip-text text-transparent">
+                AI Delivery Models
+              </span>
+            </h1>
+            <p className="text-xl sm:text-2xl text-zinc-300 max-w-3xl mx-auto font-light">
+              Whether you're building your first AI system or scaling across the organization, we deliver with clarity, structure, and accountability.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* XenPods Section */}
+      <section id="xenpods" className="py-20 px-4 sm:px-6 lg:px-8 scroll-mt-24">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+          className="max-w-7xl mx-auto"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-16">
+            <h2 className="text-6xl font-black text-white mb-6">XenPods</h2>
+            <p className="text-2xl text-cyan-400 font-semibold mb-4">
+              Fixed-Scope AI Systems. Owned Outcomes. Clear Accountability.
+            </p>
+            <p className="text-xl text-zinc-300 max-w-4xl mx-auto leading-relaxed">
+              XenPods are project-based engagements designed to deliver production-ready AI systems with no handoff risk, no dependency, and complete ownership transfer.
+            </p>
+          </motion.div>
+
+          {/* Key Principles */}
+          <motion.div variants={fadeInUp} className="mb-20 grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Fixed Scope. Fixed Cost.",
+                description: "Every engagement is bounded by a clearly defined outcome. Cost and delivery timeline are decided upfront."
+              },
+              {
+                title: "No Headcount. No Retainers.",
+                description: "You pay for the system, not the hours. There are no open-ended retainers, no permanent staffing dependencies."
+              },
+              {
+                title: "Built to Transfer.",
+                description: "From the first day of development, systems are designed to be maintained and evolved entirely by your team."
+              }
+            ].map((principle, idx) => (
+              <motion.div
+                key={idx}
+                variants={fadeInUp}
+                className="relative p-8 bg-gradient-to-br from-zinc-900 to-zinc-950 rounded-2xl border border-cyan-500/30 overflow-hidden group"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative z-10">
+                  <h3 className="text-2xl font-bold text-cyan-400 mb-4">{principle.title}</h3>
+                  <p className="text-zinc-300 leading-relaxed">{principle.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Three Tiers */}
+          <motion.div variants={fadeInUp} className="mb-16">
+            <h3 className="text-4xl font-black text-white mb-12 text-center">Three Engagement Tiers</h3>
+            
+            <div className="grid md:grid-cols-3 gap-8">
+              {/* Starter Pod */}
+              <motion.div
+                variants={fadeInUp}
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                className="relative p-8 bg-gradient-to-br from-zinc-900 via-zinc-900 to-black rounded-2xl border-2 border-cyan-500/50 overflow-hidden group"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute top-4 right-4 px-4 py-1 bg-cyan-500/20 border border-cyan-500/50 rounded-full text-cyan-400 text-xs font-bold">
+                  TARGETED
+                </div>
+                <div className="relative z-10">
+                  <h4 className="text-3xl font-black text-cyan-400 mb-4">Starter Pod</h4>
+                  <p className="text-zinc-400 mb-6">For teams building their first AI system or testing a specific use case</p>
+                  
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-start">
+                      <span className="text-cyan-400 mr-2">→</span>
+                      <p className="text-zinc-300">Sprint-based execution (2-week cycles)</p>
+                    </div>
+                    <div className="flex items-start">
+                      <span className="text-cyan-400 mr-2">→</span>
+                      <p className="text-zinc-300">1 AI Engineer + 1 Product Specialist</p>
+                    </div>
+                    <div className="flex items-start">
+                      <span className="text-cyan-400 mr-2">→</span>
+                      <p className="text-zinc-300">Single defined outcome (e.g., conversational assistant, semantic search)</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Scale Pod */}
+              <motion.div
+                variants={fadeInUp}
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                className="relative p-8 bg-gradient-to-br from-purple-900/30 via-zinc-900 to-black rounded-2xl border-2 border-purple-500/50 overflow-hidden group"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute top-4 right-4 px-4 py-1 bg-purple-500/20 border border-purple-500/50 rounded-full text-purple-400 text-xs font-bold">
+                  EXPANSION
+                </div>
+                <div className="relative z-10">
+                  <h4 className="text-3xl font-black text-purple-400 mb-4">Scale Pod</h4>
+                  <p className="text-zinc-400 mb-6">For teams expanding AI capabilities across multiple domains</p>
+                  
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-start">
+                      <span className="text-purple-400 mr-2">→</span>
+                      <p className="text-zinc-300">Quarterly cadenced execution (3-month blocks)</p>
+                    </div>
+                    <div className="flex items-start">
+                      <span className="text-purple-400 mr-2">→</span>
+                      <p className="text-zinc-300">2 AI Engineers + 1 Product Specialist + 1 Delivery Manager</p>
+                    </div>
+                    <div className="flex items-start">
+                      <span className="text-purple-400 mr-2">→</span>
+                      <p className="text-zinc-300">Multiple integrated outcomes across systems</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+
+              {/* Center of Excellence Pod */}
+              <motion.div
+                variants={fadeInUp}
+                whileHover={{ y: -8, transition: { duration: 0.3 } }}
+                className="relative p-8 bg-gradient-to-br from-blue-900/30 via-zinc-900 to-black rounded-2xl border-2 border-blue-500/50 overflow-hidden group"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-blue-500/10 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="absolute top-4 right-4 px-4 py-1 bg-blue-500/20 border border-blue-500/50 rounded-full text-blue-400 text-xs font-bold">
+                  STRATEGIC
+                </div>
+                <div className="relative z-10">
+                  <h4 className="text-3xl font-black text-blue-400 mb-4">Center of Excellence</h4>
+                  <p className="text-zinc-400 mb-6">For organizations building internal AI practices at scale</p>
+                  
+                  <div className="space-y-3 mb-6">
+                    <div className="flex items-start">
+                      <span className="text-blue-400 mr-2">→</span>
+                      <p className="text-zinc-300">Multi-track cadenced execution (6–12 month roadmap)</p>
+                    </div>
+                    <div className="flex items-start">
+                      <span className="text-blue-400 mr-2">→</span>
+                      <p className="text-zinc-300">3+ AI Engineers + 2+ Product Specialists + Delivery Manager + Strategic Advisor</p>
+                    </div>
+                    <div className="flex items-start">
+                      <span className="text-blue-400 mr-2">→</span>
+                      <p className="text-zinc-300">Organizational AI transformation with governance</p>
+                    </div>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </motion.div>
+
+          {/* Comparison Table */}
+          <motion.div variants={fadeInUp} className="mt-20">
+            <h3 className="text-4xl font-black text-white mb-12 text-center">Quick Comparison</h3>
+            <div className="overflow-x-auto">
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr className="border-b-2 border-cyan-500/50">
+                    <th className="text-left p-4 text-zinc-400 font-semibold">Feature</th>
+                    <th className="text-left p-4 text-cyan-400 font-bold">Starter Pod</th>
+                    <th className="text-left p-4 text-purple-400 font-bold">Scale Pod</th>
+                    <th className="text-left p-4 text-blue-400 font-bold">Center of Excellence</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {comparisonData.map((row, idx) => (
+                    <tr key={idx} className="border-b border-zinc-800 hover:bg-zinc-900/50 transition-colors">
+                      <td className="p-4 text-white font-semibold">{row.feature}</td>
+                      <td className="p-4 text-zinc-300">{row.starter}</td>
+                      <td className="p-4 text-zinc-300">{row.scale}</td>
+                      <td className="p-4 text-zinc-300">{row.coe}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* XenBuilds Section */}
+      <section id="xenbuilds" className="py-20 px-4 sm:px-6 lg:px-8 bg-zinc-950 scroll-mt-24">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+          className="max-w-7xl mx-auto"
+        >
+          <motion.div variants={fadeInUp} className="text-center mb-16">
+            <h2 className="text-6xl font-black text-white mb-6">XenBuilds</h2>
+            <p className="text-2xl text-purple-400 font-semibold mb-4">
+              Deploy. Integrate. Scale. Support.
+            </p>
+            <p className="text-xl text-zinc-300 max-w-4xl mx-auto leading-relaxed">
+              XenBuilds are ready-to-deploy AI systems optimized for real operations. Built for organizations that need tested, production-grade capabilities without the time and complexity of custom development.
+            </p>
+          </motion.div>
+
+          {/* Key Principles */}
+          <motion.div variants={fadeInUp} className="mb-16 grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Pre-Built Systems",
+                description: "Each XenBuild is a complete, tested system designed around proven use cases—conversational AI, document search, data analysis, or fundamental analysis."
+              },
+              {
+                title: "Deployment-Ready",
+                description: "XenBuilds deploy into your environment and integrate with existing infrastructure—on-premise, cloud, or hybrid."
+              },
+              {
+                title: "Customizable Core",
+                description: "While the architecture is standardized, XenBuilds adapt to your data, workflows, and security requirements."
+              }
+            ].map((principle, idx) => (
+              <motion.div
+                key={idx}
+                variants={fadeInUp}
+                className="relative p-8 bg-gradient-to-br from-zinc-900 to-black rounded-2xl border border-purple-500/30 overflow-hidden group"
+              >
+                <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                <div className="relative z-10">
+                  <h3 className="text-2xl font-bold text-purple-400 mb-4">{principle.title}</h3>
+                  <p className="text-zinc-300 leading-relaxed">{principle.description}</p>
+                </div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* What You Get */}
+          <motion.div variants={fadeInUp} className="mb-16">
+            <h3 className="text-4xl font-black text-white mb-12 text-center">What You Get</h3>
+            
+            <div className="grid md:grid-cols-2 gap-8">
+              {[
+                {
+                  icon: "⚙️",
+                  title: "Complete System Deployment",
+                  description: "Fully operational AI system deployed into your environment—cloud, on-premise, or hybrid."
+                },
+                {
+                  icon: "🔌",
+                  title: "Integration Support",
+                  description: "Connection to existing data sources, workflows, and tools within your organization."
+                },
+                {
+                  icon: "🎯",
+                  title: "Configuration & Tuning",
+                  description: "System adapted to your use case, data structure, and operational requirements."
+                },
+                {
+                  icon: "📚",
+                  title: "Documentation & Training",
+                  description: "Complete operational documentation and team training to run the system independently."
+                },
+                {
+                  icon: "🛡️",
+                  title: "Security & Compliance",
+                  description: "Systems architected to meet your security, privacy, and governance standards."
+                },
+                {
+                  icon: "🔄",
+                  title: "Ongoing Support (Optional)",
+                  description: "Optional maintenance, monitoring, and evolution support after deployment."
+                }
+              ].map((item, idx) => (
+                <motion.div
+                  key={idx}
+                  variants={fadeInUp}
+                  className="relative p-6 bg-gradient-to-br from-zinc-900 to-black rounded-xl border border-zinc-800 hover:border-purple-500/50 transition-all group"
+                >
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-500/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl" />
+                  <div className="relative z-10 flex items-start">
+                    <span className="text-4xl mr-4">{item.icon}</span>
+                    <div>
+                      <h4 className="text-xl font-bold text-white mb-2">{item.title}</h4>
+                      <p className="text-zinc-400">{item.description}</p>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+
+          {/* Available Systems */}
+          <motion.div variants={fadeInUp} className="text-center">
+            <h3 className="text-4xl font-black text-white mb-8">Available Systems</h3>
+            <p className="text-xl text-zinc-300 mb-12">
+              Explore our ready-to-deploy AI systems designed for immediate impact
+            </p>
+            <Link to="/builds">
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+                className="px-10 py-5 bg-gradient-to-r from-purple-600 to-blue-600 text-white text-xl font-bold rounded-xl shadow-xl shadow-purple-500/20 hover:shadow-2xl hover:shadow-purple-500/30 transition-all"
+              >
+                View All Builds →
+              </motion.button>
+            </Link>
+          </motion.div>
+        </motion.div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-blue-500/10" />
+        
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative z-10 max-w-4xl mx-auto text-center"
+        >
+          <h2 className="text-4xl sm:text-5xl font-black text-white mb-6">
+            Ready to Build AI Systems That Matter?
+          </h2>
+          <p className="text-xl text-zinc-300 mb-10">
+            Let's design a delivery model that fits your goals, timeline, and team structure.
+          </p>
+          <motion.a
+            href="#contact"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            className="inline-block px-10 py-5 bg-gradient-to-r from-cyan-500 to-purple-600 text-white text-xl font-bold rounded-xl shadow-xl shadow-cyan-500/20 hover:shadow-2xl hover:shadow-cyan-500/30 transition-all"
+          >
+            Get Started
+          </motion.a>
+        </motion.div>
+      </section>
+    </motion.div>
+  );
+};
+
+export default ServicesPage;

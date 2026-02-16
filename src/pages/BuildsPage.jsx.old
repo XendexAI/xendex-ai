@@ -1,0 +1,383 @@
+import React from 'react';
+import { motion } from 'framer-motion';
+
+const BuildsPage = () => {
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 60 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.6, -0.05, 0.01, 0.99] }
+    }
+  };
+
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.15, delayChildren: 0.2 }
+    }
+  };
+
+  const builds = [
+    {
+      id: "conversational",
+      title: "Conversational AI Assistant",
+      tagline: "Turn conversations into operations.",
+      color: "cyan",
+      gradient: "from-cyan-500 to-blue-600",
+      borderColor: "border-cyan-500/50",
+      hoverBg: "from-cyan-500/10",
+      description: "A structured, context-aware AI assistant that responds to operational questions, automates workflows, and integrates with existing systems.",
+      whatItIs: "A production-grade conversational interface designed to understand user intent, retrieve relevant context, and execute actions across connected systems. Built for teams who need more than a chatbot—systems that can act, not just answer.",
+      capabilities: [
+        "Multi-turn conversation management with persistent context",
+        "Integration with internal documentation, databases, and APIs",
+        "Structured output for downstream automation",
+        "Role-based access and audit logging",
+        "Customizable tone, response format, and guardrails"
+      ],
+      useCases: [
+        "Customer support automation with escalation routing",
+        "Internal knowledge assistant for operations teams",
+        "Workflow automation via natural language commands",
+        "Onboarding assistant for new employees"
+      ],
+      technicalHighlights: [
+        "Retrieval-Augmented Generation (RAG) for grounded responses",
+        "Hybrid search (semantic + keyword) for high precision",
+        "Tool-calling architecture for system integration",
+        "Monitoring and feedback loops for continuous improvement"
+      ]
+    },
+    {
+      id: "document-search",
+      title: "AI-Powered Document Search",
+      tagline: "Find the right information, instantly.",
+      color: "purple",
+      gradient: "from-purple-500 to-fuchsia-600",
+      borderColor: "border-purple-500/50",
+      hoverBg: "from-purple-500/10",
+      description: "Semantic search across unstructured documents—PDFs, emails, reports—delivering precise answers instead of endless keyword results.",
+      whatItIs: "An intelligent search system that understands meaning, not just keywords. Designed for organizations with large document repositories who need faster retrieval and better relevance than traditional search.",
+      capabilities: [
+        "Semantic understanding of natural language queries",
+        "Search across PDFs, Word docs, spreadsheets, emails, and more",
+        "Answer extraction with source citation",
+        "Metadata filtering (date, author, department, etc.)",
+        "Personalized results based on user role and permissions"
+      ],
+      useCases: [
+        "Legal document discovery and case research",
+        "Compliance and regulatory document retrieval",
+        "Internal knowledge base for distributed teams",
+        "Research and literature review automation"
+      ],
+      technicalHighlights: [
+        "Vector embeddings for semantic similarity",
+        "Chunking and indexing strategies optimized for accuracy",
+        "Re-ranking pipelines to improve top-k precision",
+        "Integration with existing document management systems"
+      ]
+    },
+    {
+      id: "data-analysis",
+      title: "AI Data Analysis System",
+      tagline: "From raw data to clear insights.",
+      color: "blue",
+      gradient: "from-blue-500 to-indigo-600",
+      borderColor: "border-blue-500/50",
+      hoverBg: "from-blue-500/10",
+      description: "Automated data exploration, pattern detection, and reporting—turning complex datasets into actionable insights without manual analysis.",
+      whatItIs: "An AI-driven analytics system that automates exploratory data analysis, identifies patterns, detects anomalies, and generates structured reports. Built for teams who need speed and consistency in data interpretation.",
+      capabilities: [
+        "Automated exploratory data analysis (EDA)",
+        "Pattern recognition and anomaly detection",
+        "Natural language queries for data insights",
+        "Automated report generation with visualizations",
+        "Integration with SQL databases, data warehouses, and BI tools"
+      ],
+      useCases: [
+        "Sales and marketing performance analysis",
+        "Financial reporting and variance analysis",
+        "Operational metrics monitoring and alerting",
+        "Customer behavior analysis and segmentation"
+      ],
+      technicalHighlights: [
+        "Code-generation pipeline for data transformations",
+        "Statistical analysis and hypothesis testing",
+        "Time-series forecasting and trend detection",
+        "Explainable AI for transparency in insights"
+      ]
+    },
+    {
+      id: "fundamental-analysis",
+      title: "AI Fundamental Analysis System",
+      tagline: "Investment research, accelerated.",
+      color: "emerald",
+      gradient: "from-emerald-500 to-teal-600",
+      borderColor: "border-emerald-500/50",
+      hoverBg: "from-emerald-500/10",
+      description: "Automated extraction and analysis of financial statements, earnings transcripts, and market data—delivering structured investment insights at scale.",
+      whatItIs: "A specialized AI system designed for investment research. Automates the analysis of financial filings, earnings calls, competitor positioning, and market trends to support faster, more informed decision-making.",
+      capabilities: [
+        "Financial statement parsing and ratio calculation",
+        "Earnings call transcript analysis and sentiment tracking",
+        "Competitive landscape mapping",
+        "Trend analysis across sectors and time periods",
+        "Custom metrics and benchmarking"
+      ],
+      useCases: [
+        "Equity research and investment screening",
+        "Portfolio risk assessment and monitoring",
+        "M&A target identification and due diligence",
+        "Market intelligence for strategic planning"
+      ],
+      technicalHighlights: [
+        "Structured extraction from 10-K, 10-Q, and earnings transcripts",
+        "Entity recognition for companies, executives, and products",
+        "Sentiment analysis calibrated for financial language",
+        "Time-series analysis for performance tracking"
+      ]
+    }
+  ];
+
+  return (
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      className="bg-black min-h-screen"
+    >
+      {/* Hero Section */}
+      <section className="relative pt-32 pb-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div className="absolute inset-0">
+          <div className="absolute top-1/3 left-1/4 w-96 h-96 bg-cyan-500/10 rounded-full blur-3xl" />
+          <div className="absolute bottom-1/3 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl" />
+        </div>
+
+        <div className="relative z-10 max-w-6xl mx-auto text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <p className="text-cyan-400 font-semibold mb-6 tracking-wider uppercase text-sm">XenBuilds</p>
+            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black mb-10 leading-tight">
+              <span className="bg-gradient-to-r from-white via-cyan-200 to-purple-300 bg-clip-text text-transparent">
+                Production-Ready AI Systems
+              </span>
+            </h1>
+            <p className="text-xl sm:text-2xl text-zinc-300 max-w-4xl mx-auto font-light leading-relaxed">
+              Deploy tested, scalable AI capabilities into your operations. Each XenBuild is a complete system architected for real-world performance, not proof-of-concept demos.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Builds Grid */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8">
+        <div className="max-w-7xl mx-auto space-y-32">
+          {builds.map((build, index) => (
+            <motion.div
+              key={build.id}
+              id={build.id}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-100px" }}
+              variants={staggerContainer}
+              className="scroll-mt-24"
+            >
+              <div className={`relative p-10 bg-gradient-to-br from-zinc-900 via-zinc-900 to-black rounded-3xl border-2 ${build.borderColor} overflow-hidden group`}>
+                {/* Animated Background */}
+                <div className={`absolute inset-0 bg-gradient-to-br ${build.hoverBg} to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
+                
+                {/* Decorative Elements */}
+                <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-white/5 to-transparent rounded-full blur-3xl" />
+                
+                <div className="relative z-10">
+                  {/* Header */}
+                  <motion.div variants={fadeInUp} className="mb-12">
+                    <div className="flex items-center gap-4 mb-4">
+                      <span className={`px-4 py-1 bg-gradient-to-r ${build.gradient} text-white text-sm font-bold rounded-full`}>
+                        #{index + 1}
+                      </span>
+                      <h2 className={`text-5xl font-black bg-gradient-to-r ${build.gradient} bg-clip-text text-transparent`}>
+                        {build.title}
+                      </h2>
+                    </div>
+                    <p className="text-3xl text-zinc-400 font-light italic">{build.tagline}</p>
+                  </motion.div>
+
+                  {/* Description */}
+                  <motion.p variants={fadeInUp} className="text-xl text-zinc-300 leading-relaxed mb-12 max-w-4xl">
+                    {build.description}
+                  </motion.p>
+
+                  {/* What It Is */}
+                  <motion.div variants={fadeInUp} className="mb-12">
+                    <h3 className="text-2xl font-bold text-white mb-4">What It Is</h3>
+                    <p className="text-lg text-zinc-300 leading-relaxed">{build.whatItIs}</p>
+                  </motion.div>
+
+                  {/* Core Capabilities */}
+                  <motion.div variants={fadeInUp} className="mb-12">
+                    <h3 className="text-2xl font-bold text-white mb-6">Core Capabilities</h3>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      {build.capabilities.map((capability, idx) => (
+                        <div key={idx} className="flex items-start">
+                          <span className={`text-${build.color}-400 mr-3 mt-1 text-xl`}>→</span>
+                          <p className="text-zinc-300">{capability}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+
+                  {/* Use Cases */}
+                  <motion.div variants={fadeInUp} className="mb-12">
+                    <h3 className="text-2xl font-bold text-white mb-6">Common Use Cases</h3>
+                    <div className="grid md:grid-cols-2 gap-4">
+                      {build.useCases.map((useCase, idx) => (
+                        <div key={idx} className={`p-4 bg-gradient-to-br from-${build.color}-500/5 to-transparent border border-${build.color}-500/20 rounded-xl`}>
+                          <p className="text-zinc-300">{useCase}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+
+                  {/* Technical Highlights */}
+                  <motion.div variants={fadeInUp}>
+                    <h3 className="text-2xl font-bold text-white mb-6">Technical Highlights</h3>
+                    <div className="space-y-3">
+                      {build.technicalHighlights.map((highlight, idx) => (
+                        <div key={idx} className="flex items-start">
+                          <span className="text-zinc-600 mr-3">▸</span>
+                          <p className="text-zinc-400">{highlight}</p>
+                        </div>
+                      ))}
+                    </div>
+                  </motion.div>
+
+                  {/* CTA */}
+                  <motion.div variants={fadeInUp} className="mt-12 pt-8 border-t border-zinc-800">
+                    <p className="text-lg text-zinc-400 mb-6">
+                      Ready to deploy this system? Let's discuss your specific requirements and integration needs.
+                    </p>
+                    <motion.a
+                      href="#contact"
+                      whileHover={{ scale: 1.02 }}
+                      whileTap={{ scale: 0.98 }}
+                      className={`inline-block px-8 py-4 bg-gradient-to-r ${build.gradient} text-white font-bold rounded-xl shadow-lg hover:shadow-xl transition-all`}
+                    >
+                      Get Started →
+                    </motion.a>
+                  </motion.div>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </section>
+
+      {/* Why XenBuilds Section */}
+      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-zinc-950">
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, margin: "-100px" }}
+          variants={staggerContainer}
+          className="max-w-6xl mx-auto"
+        >
+          <motion.h2 variants={fadeInUp} className="text-5xl font-black text-white mb-16 text-center">
+            Why Choose XenBuilds?
+          </motion.h2>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              {
+                title: "Deploy Faster",
+                description: "Pre-built architecture means weeks to deployment, not months of custom development.",
+                icon: "⚡"
+              },
+              {
+                title: "Lower Risk",
+                description: "Battle-tested systems with proven patterns. No experimental architecture in production.",
+                icon: "🛡️"
+              },
+              {
+                title: "Full Ownership",
+                description: "Complete system transfer. No vendor lock-in, no ongoing dependencies.",
+                icon: "🔑"
+              },
+              {
+                title: "Adapt to Your Needs",
+                description: "Standardized core with customizable integrations, workflows, and data sources.",
+                icon: "🔧"
+              },
+              {
+                title: "Scale Confidently",
+                description: "Architected for production load, not demo traffic. Built to handle real-world volume.",
+                icon: "📈"
+              },
+              {
+                title: "Clear Economics",
+                description: "Fixed deployment cost. Predictable timeline. No surprise expenses.",
+                icon: "💰"
+              }
+            ].map((benefit, idx) => (
+              <motion.div
+                key={idx}
+                variants={fadeInUp}
+                className="p-8 bg-gradient-to-br from-zinc-900 to-black rounded-2xl border border-zinc-800 hover:border-cyan-500/50 transition-all group"
+              >
+                <div className="text-5xl mb-4">{benefit.icon}</div>
+                <h3 className="text-2xl font-bold text-white mb-3">{benefit.title}</h3>
+                <p className="text-zinc-400 leading-relaxed">{benefit.description}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-blue-500/10" />
+        
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative z-10 max-w-4xl mx-auto text-center"
+        >
+          <h2 className="text-4xl sm:text-5xl font-black text-white mb-6">
+            Ready to Deploy Production AI?
+          </h2>
+          <p className="text-xl text-zinc-300 mb-10">
+            Let's identify the right XenBuild for your organization and plan the deployment.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <motion.a
+              href="#contact"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-block px-10 py-5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-xl font-bold rounded-xl shadow-xl shadow-cyan-500/20 hover:shadow-2xl hover:shadow-cyan-500/30 transition-all"
+            >
+              Schedule Consultation
+            </motion.a>
+            <motion.a
+              href="/services"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="inline-block px-10 py-5 bg-zinc-900 border-2 border-zinc-700 text-white text-xl font-bold rounded-xl hover:border-cyan-500/50 transition-all"
+            >
+              View All Services
+            </motion.a>
+          </div>
+        </motion.div>
+      </section>
+    </motion.div>
+  );
+};
+
+export default BuildsPage;
