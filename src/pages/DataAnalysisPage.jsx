@@ -117,7 +117,7 @@ const DataAnalysisPage = () => {
         <div className="absolute inset-0 overflow-hidden">
           <video
             className="absolute inset-0 w-full h-full object-cover opacity-20"
-            src="/images/video2.mov"
+            src="/images/video2.mp4"
             autoPlay
             loop
             muted
