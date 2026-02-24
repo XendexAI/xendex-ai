@@ -24,16 +24,27 @@ const Footer = ({ logo, columns, socialLinks, copyright }) => {
             <div key={index}>
               <h3 className="text-white font-semibold mb-4">{column.title}</h3>
               <ul className="space-y-2">
-                {column.links.map((link, linkIndex) => (
-                  <li key={linkIndex}>
-                    <a
-                      href={link.href}
-                      className="text-sm hover:text-white transition-colors"
-                    >
-                      {link.text}
-                    </a>
-                  </li>
-                ))}
+                {column.links
+                  .filter(link => ![
+                    'Research',
+                    'Careers',
+                    'AI Strategy',
+                    'Model Training',
+                    'Documentation',
+                    'Case Studies',
+                    'Blog',
+                    'Support'
+                  ].includes(link.text))
+                  .map((link, linkIndex) => (
+                    <li key={linkIndex}>
+                      <a
+                        href={link.href}
+                        className="text-sm hover:text-white transition-colors"
+                      >
+                        {link.text}
+                      </a>
+                    </li>
+                  ))}
               </ul>
             </div>
           ))}

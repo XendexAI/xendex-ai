@@ -9,7 +9,8 @@ import {
   Shield,
   Clock,
   BarChart3,
-  Sparkles
+  Sparkles,
+  Users
 } from 'lucide-react';
 
 const DocumentSearchPage = () => {
@@ -30,20 +31,11 @@ const DocumentSearchPage = () => {
     }
   };
 
-  const scaleIn = {
-    hidden: { scale: 0.8, opacity: 0 },
-    visible: {
-      scale: 1,
-      opacity: 1,
-      transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] }
-    }
-  };
-
   const stats = [
-    { value: '10x', label: 'Faster Search', icon: Zap },
-    { value: '90%', label: 'Accuracy Rate', icon: Check },
-    { value: '100M+', label: 'Documents', icon: FileSearch },
-    { value: '<2s', label: 'Response Time', icon: Clock }
+    { value: '10x', label: 'Faster Search', icon: Zap, color: 'text-amber-400', iconBg: 'bg-amber-500/10', iconBorder: 'border-amber-500/20', glow: 'from-amber-500/10 to-transparent', numGrad: 'from-amber-200 via-white to-white' },
+    { value: '90%', label: 'Accuracy Rate', icon: Check, color: 'text-emerald-400', iconBg: 'bg-emerald-500/10', iconBorder: 'border-emerald-500/20', glow: 'from-emerald-500/10 to-transparent', numGrad: 'from-emerald-200 via-white to-white' },
+    { value: '100M+', label: 'Documents', icon: FileSearch, color: 'text-blue-400', iconBg: 'bg-blue-500/10', iconBorder: 'border-blue-500/20', glow: 'from-blue-500/10 to-transparent', numGrad: 'from-blue-200 via-white to-white' },
+    { value: '<2s', label: 'Response Time', icon: Clock, color: 'text-violet-400', iconBg: 'bg-violet-500/10', iconBorder: 'border-violet-500/20', glow: 'from-violet-500/10 to-transparent', numGrad: 'from-violet-200 via-white to-white' }
   ];
 
   const features = [
@@ -52,70 +44,64 @@ const DocumentSearchPage = () => {
       description: 'Move beyond keyword search with semantic understanding. Our AI-powered engine delivers precise results from millions of documents in seconds, comprehending the meaning behind every query.',
       image: '/images/dsa1.png',
       width: '480px',
-      height: '530px'
+      height: '530px',
+      tag: 'Semantic Search',
+      halo: 'from-blue-500/20 via-cyan-500/10'
     },
     {
       title: 'Instant Answer Extraction',
       description: 'Get direct answers extracted from documents, not just file links. Our system provides precise information with source citations, saving hours of manual review for your team.',
       image: '/images/dsa2.png',
       width: '720px',
-      height: '510px'
+      height: '510px',
+      tag: 'Instant Answers',
+      halo: 'from-indigo-500/20 via-violet-500/10'
     },
     {
       title: 'Cross-Functional Intelligence',
       description: "Empower every department with instant knowledge access. From Sales and Finance to Legal and Strategy, our AI adapts to each team's unique needs, delivering role-specific insights across your organization.",
       image: '/images/dsa3.png',
       width: '720px',
-      height: '510px'
+      height: '510px',
+      tag: 'Cross-Functional',
+      halo: 'from-cyan-500/20 via-blue-500/10'
     }
   ];
 
   const capabilities = [
-    {
-      title: 'Semantic Search Engine',
-      description: 'Understands intent and meaning, not just keywords and phrases',
-      icon: FileSearch
-    },
-    {
-      title: 'Multi-Format Support',
-      description: 'PDFs, Word, Excel, PowerPoint, emails, HTML, and more',
-      icon: Code
-    },
-    {
-      title: 'Answer Extraction',
-      description: 'Get direct answers with citations, not just document links',
-      icon: Sparkles
-    },
-    {
-      title: 'Advanced Filtering',
-      description: 'Filter by date, author, type, department, tags, and custom metadata',
-      icon: BarChart3
-    },
-    {
-      title: 'Permission-Aware',
-      description: 'Respects user roles and document access permissions',
-      icon: Shield
-    },
-    {
-      title: 'Enterprise Scale',
-      description: 'Handles millions of documents with sub-second latency',
-      icon: Zap
-    }
+    { title: 'Semantic Search Engine', description: 'Understands intent and meaning, not just keywords and phrases', icon: FileSearch, color: 'text-blue-400', iconBg: 'bg-blue-500/10', iconBorder: 'border-blue-500/20', topLine: 'via-blue-500/40' },
+    { title: 'Multi-Format Support', description: 'PDFs, Word, Excel, PowerPoint, emails, HTML, and more', icon: Code, color: 'text-cyan-400', iconBg: 'bg-cyan-500/10', iconBorder: 'border-cyan-500/20', topLine: 'via-cyan-500/40' },
+    { title: 'Answer Extraction', description: 'Get direct answers with citations, not just document links', icon: Sparkles, color: 'text-amber-400', iconBg: 'bg-amber-500/10', iconBorder: 'border-amber-500/20', topLine: 'via-amber-500/40' },
+    { title: 'Advanced Filtering', description: 'Filter by date, author, type, department, tags, and custom metadata', icon: BarChart3, color: 'text-violet-400', iconBg: 'bg-violet-500/10', iconBorder: 'border-violet-500/20', topLine: 'via-violet-500/40' },
+    { title: 'Permission-Aware', description: 'Respects user roles and document access permissions', icon: Shield, color: 'text-emerald-400', iconBg: 'bg-emerald-500/10', iconBorder: 'border-emerald-500/20', topLine: 'via-emerald-500/40' },
+    { title: 'Enterprise Scale', description: 'Handles millions of documents with sub-second latency', icon: Zap, color: 'text-indigo-400', iconBg: 'bg-indigo-500/10', iconBorder: 'border-indigo-500/20', topLine: 'via-indigo-500/40' }
   ];
 
   return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className="bg-gray-900 min-h-screen"
-    >
+    <div className="bg-gradient-to-b from-[#0a0d14] via-[#0d1117] to-[#0a0d14] min-h-screen overflow-hidden">
+      {/* Ambient corner lights */}
+      <div className="pointer-events-none fixed inset-0 z-0">
+        <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-blue-600/8 blur-[120px]" />
+        <div className="absolute top-1/3 -right-40 w-[500px] h-[500px] rounded-full bg-indigo-600/8 blur-[100px]" />
+        <div className="absolute bottom-1/4 -left-20 w-[400px] h-[400px] rounded-full bg-cyan-600/6 blur-[90px]" />
+        <div className="absolute -bottom-40 -right-40 w-[600px] h-[600px] rounded-full bg-blue-700/8 blur-[120px]" />
+        <div className="absolute top-1/2 left-1/4 w-[300px] h-[300px] rounded-full bg-indigo-500/5 blur-[80px]" />
+        <div className="absolute bottom-1/3 right-1/4 w-[350px] h-[350px] rounded-full bg-cyan-700/6 blur-[80px]" />
+        <div className="absolute inset-0 opacity-[0.18]" style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.35) 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
+      </div>
+      {/* Top blue hairline glow */}
+      <div className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
+        <div className="h-px bg-gradient-to-r from-transparent via-blue-500/60 to-transparent" />
+        <div className="h-8 bg-gradient-to-b from-blue-500/10 to-transparent" />
+      </div>
+
       {/* Hero Section */}
       <section className="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden flex items-center min-h-screen">
         <div className="absolute inset-0 overflow-hidden">
           <div className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-90"
             style={{ backgroundImage: "url('/images/xendex.webp')" }}
           />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0d14]/40 via-transparent to-[#0a0d14]/80" />
         </div>
 
         <div className="relative z-10 max-w-6xl mx-auto w-full">
@@ -134,53 +120,38 @@ const DocumentSearchPage = () => {
                 Find the right information, instantly
               </p>
             </motion.div>
-
-            <motion.div variants={fadeInUp} className="flex flex-wrap justify-center gap-4 mt-12">
-              <button className="px-8 py-4 bg-gradient-to-r from-teal-400/70 via-emerald-400/70 to-green-500/70 text-white font-semibold rounded-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
-                style={{ boxShadow: '0 10px 30px rgba(45, 212, 191, 0.2)' }}
-              >
-                Start Building
-                <ArrowRight className="w-5 h-5" />
-              </button>
-            </motion.div>
           </motion.div>
         </div>
       </section>
 
       {/* Stats Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={staggerContainer}
-          className="max-w-6xl mx-auto"
-        >
-          <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-px bg-white/5 rounded-2xl overflow-hidden">
             {stats.map((stat, index) => {
               const StatIcon = stat.icon;
               return (
-                <motion.div
-                  key={index}
-                  variants={scaleIn}
-                  className="relative group"
-                >
-                  <div className="p-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-700 hover:border-gray-600 transition-all duration-300 h-full">
-                    <div className="absolute inset-0 bg-gradient-to-br from-teal-400/70 via-emerald-400/70 to-green-500/70 opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300" />
-                    <StatIcon className="w-8 h-8 text-teal-400 mb-4" />
-                    <div className="text-4xl font-black text-white mb-2">{stat.value}</div>
-                    <div className="text-sm text-gray-400">{stat.label}</div>
+                <div key={index} className="relative group bg-[#0d1117] p-8 hover:bg-[#0f1520] transition-colors duration-300 overflow-hidden">
+                  <div className={`absolute inset-0 bg-gradient-to-br ${stat.glow} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+                  <div className={`relative z-10 w-10 h-10 rounded-xl ${stat.iconBg} border ${stat.iconBorder} flex items-center justify-center mb-4`}>
+                    <StatIcon className={`w-5 h-5 ${stat.color}`} />
                   </div>
-                </motion.div>
+                  <div className={`relative z-10 text-4xl font-normal bg-gradient-to-r ${stat.numGrad} bg-clip-text text-transparent mb-1`}>{stat.value}</div>
+                  <div className="relative z-10 text-sm text-white/40 font-normal">{stat.label}</div>
+                </div>
               );
             })}
           </div>
-        </motion.div>
+        </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-normal text-white mb-4">How It Works</h2>
+            <p className="text-white/40 font-normal">Precision intelligence across every document in your organization</p>
+          </div>
           {features.map((feature, index) => (
             <motion.div
               key={index}
@@ -188,35 +159,42 @@ const DocumentSearchPage = () => {
               whileInView="visible"
               viewport={{ once: true, margin: "-100px" }}
               variants={fadeInUp}
-              className={`grid md:grid-cols-2 gap-12 items-center mb-32 last:mb-0 ${
-                index % 2 === 1 ? 'md:grid-flow-dense' : ''
-              }`}
+              className={`grid md:grid-cols-2 gap-12 items-center mb-32 last:mb-0 ${index % 2 === 1 ? 'md:grid-flow-dense' : ''}`}
             >
               <div className={index % 2 === 1 ? 'md:col-start-2' : ''}>
                 <div className="max-w-lg">
-                  <h3 className="text-4xl sm:text-5xl font-bold text-white mb-6 leading-tight">
-                    {feature.title}
-                  </h3>
-                  <p className="text-xl text-white font-semibold leading-relaxed mb-8">
-                    {feature.description}
-                  </p>
+                  <div className="flex items-center gap-2 mb-5">
+                    <span className="relative flex h-2 w-2">
+                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
+                      <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500" />
+                    </span>
+                    <span className="text-xs font-normal text-blue-400/80 tracking-widest uppercase">{feature.tag}</span>
+                  </div>
+                  <div className="relative border border-white/5 rounded-xl p-6 bg-white/[0.02]">
+                    <div className="absolute top-0 left-0 w-4 h-4 border-t border-l border-blue-500/40 rounded-tl-xl" />
+                    <div className="absolute top-0 right-0 w-4 h-4 border-t border-r border-blue-500/40 rounded-tr-xl" />
+                    <div className="absolute bottom-0 left-0 w-4 h-4 border-b border-l border-blue-500/40 rounded-bl-xl" />
+                    <div className="absolute bottom-0 right-0 w-4 h-4 border-b border-r border-blue-500/40 rounded-br-xl" />
+                    <h3 className="text-3xl sm:text-4xl font-normal text-white mb-4 leading-tight">{feature.title}</h3>
+                    <div className="flex gap-3">
+                      <div className="flex-shrink-0 w-0.5 bg-gradient-to-b from-blue-500/60 to-transparent rounded-full mt-1" />
+                      <p className="text-white/50 font-normal leading-relaxed">{feature.description}</p>
+                    </div>
+                  </div>
                 </div>
               </div>
-
               <div className={index % 2 === 1 ? 'md:col-start-1 md:row-start-1' : ''}>
-                <div className="relative group">
+                <div className="relative">
+                  <div className={`absolute -inset-4 bg-gradient-to-br ${feature.halo} to-transparent rounded-3xl blur-2xl opacity-60`} />
                   <div className="relative rounded-2xl overflow-hidden bg-transparent">
                     <img
                       src={feature.image}
                       alt={feature.title}
                       className="w-full object-contain mx-auto bg-transparent"
                       style={{ maxWidth: feature.width, maxHeight: feature.height }}
-                      onError={(e) => {
-                        e.target.src = 'https://via.placeholder.com/800x600/000000/ffffff?text=Feature+Preview';
-                      }}
+                      onError={(e) => { e.target.src = 'https://via.placeholder.com/800x600/000000/ffffff?text=Feature+Preview'; }}
                     />
                   </div>
-                  <div className="absolute -inset-1 bg-gradient-to-r from-teal-400/70 via-emerald-400/70 to-green-500/70 rounded-2xl blur-xl opacity-0 group-hover:opacity-20 transition-opacity duration-300 -z-10" />
                 </div>
               </div>
             </motion.div>
@@ -225,51 +203,34 @@ const DocumentSearchPage = () => {
       </section>
 
       {/* Capabilities Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-gray-900">
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={staggerContainer}
-          className="max-w-6xl mx-auto"
-        >
-          <motion.div variants={fadeInUp} className="text-center mb-16">
-            <h2 className="text-4xl sm:text-5xl font-black text-white mb-6">
-              Core Capabilities
-            </h2>
-            <p className="text-xl text-gray-400">
-              Everything you need, built for enterprise scale
-            </p>
-          </motion.div>
-
-          <motion.div variants={staggerContainer} className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-6xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl sm:text-5xl font-normal text-white mb-4">Core Capabilities</h2>
+            <p className="text-white/40 font-normal">Everything you need, built for enterprise scale</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-px bg-white/5 rounded-2xl overflow-hidden">
             {capabilities.map((capability, index) => {
               const CapIcon = capability.icon;
               return (
-                <motion.div
-                  key={index}
-                  variants={scaleIn}
-                  className="group relative"
-                >
-                  <div className="p-8 bg-gradient-to-br from-gray-800/50 to-gray-900/50 backdrop-blur-sm rounded-2xl border border-gray-700 hover:border-gray-600 transition-all duration-300 h-full">
-                    <div className="absolute inset-0 bg-gradient-to-br from-teal-400/70 via-emerald-400/70 to-green-500/70 opacity-0 group-hover:opacity-10 rounded-2xl transition-opacity duration-300" />
-                    <CapIcon className="w-12 h-12 text-teal-400 mb-4 group-hover:scale-110 transition-transform duration-300" />
-                    <h3 className="text-xl font-bold text-white mb-3">{capability.title}</h3>
-                    <p className="text-gray-400 leading-relaxed">{capability.description}</p>
+                <div key={index} className="group relative bg-[#0d1117] p-8 hover:bg-[#0f1520] transition-colors duration-300 overflow-hidden">
+                  <div className={`absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent ${capability.topLine} to-transparent`} />
+                  <div className={`w-10 h-10 rounded-xl ${capability.iconBg} border ${capability.iconBorder} flex items-center justify-center mb-5`}>
+                    <CapIcon className={`w-5 h-5 ${capability.color}`} />
                   </div>
-                </motion.div>
+                  <h3 className="text-lg font-normal text-white mb-2">{capability.title}</h3>
+                  <p className="text-white/40 text-sm font-normal leading-relaxed">{capability.description}</p>
+                </div>
               );
             })}
-          </motion.div>
-        </motion.div>
+          </div>
+        </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute inset-0 bg-gradient-to-r from-teal-400/70 via-emerald-400/70 to-green-500/70 opacity-10" />
-        </div>
-
+      <section className="py-32 px-4 sm:px-6 lg:px-8 relative z-10 overflow-hidden">
+        <div className="absolute left-1/4 top-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-blue-600/8 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute right-1/4 top-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-indigo-600/8 rounded-full blur-[100px] pointer-events-none" />
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -277,27 +238,18 @@ const DocumentSearchPage = () => {
           variants={fadeInUp}
           className="relative z-10 max-w-4xl mx-auto text-center"
         >
-          <h2 className="text-5xl sm:text-6xl font-black text-white mb-6">
-            Ready to Deploy?
-          </h2>
-          <p className="text-2xl text-gray-300 mb-12">
+          <h2 className="text-5xl sm:text-6xl font-normal text-white mb-6">Ready to Search?</h2>
+          <p className="text-xl text-white/50 font-normal mb-12">
             Let's build your AI-powered document search system together
           </p>
-          
           <div className="flex flex-wrap justify-center gap-6">
-            <button className="px-10 py-5 bg-gradient-to-r from-teal-400/70 via-emerald-400/70 to-green-500/70 text-white text-lg font-bold rounded-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center gap-3"
-              style={{ boxShadow: '0 20px 60px rgba(45, 212, 191, 0.2)' }}
-            >
-              <Zap className="w-6 h-6" />
-              Start Your Build
-            </button>
-            <button className="px-10 py-5 bg-gray-800/70 backdrop-blur-sm text-white text-lg font-bold rounded-xl border-2 border-gray-700 hover:border-gray-600 hover:bg-gray-800 transition-all duration-300">
+            <button className="px-10 py-5 bg-white/5 backdrop-blur-sm text-white text-lg font-normal rounded-xl border border-white/10 hover:border-white/20 hover:bg-white/8 transition-all duration-300">
               Talk to an Expert
             </button>
           </div>
         </motion.div>
       </section>
-    </motion.div>
+    </div>
   );
 };
 

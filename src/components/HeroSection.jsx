@@ -6,7 +6,7 @@ const HeroSection = ({
   subtitle = "From start to live in weeks.",
   description = "Xendex AI designs and operates production-grade AI systems using sprint-based execution, turning AI from pilots and experiments into dependable, owned infrastructure that runs inside real business environments.",
   ctaText = "Speak With Our AI Experts",
-  ctaLink = "#contact",
+  ctaLink = "contact",
   showLogos = true,
   logos = []
 }) => {
@@ -141,95 +141,12 @@ const HeroSection = ({
           scale
         }}
       >
-        {/* Badge */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="mb-12 flex justify-center"
-        >
-          <motion.div 
-            className="relative group cursor-pointer"
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
-          >
-            {/* Animated Gradient Border */}
-            <motion.div
-              className="absolute -inset-[1px] rounded-full opacity-75 blur-sm"
-              animate={{
-                background: [
-                  'linear-gradient(90deg, #06b6d4, #3b82f6, #8b5cf6, #06b6d4)',
-                  'linear-gradient(180deg, #06b6d4, #3b82f6, #8b5cf6, #06b6d4)',
-                  'linear-gradient(270deg, #06b6d4, #3b82f6, #8b5cf6, #06b6d4)',
-                  'linear-gradient(360deg, #06b6d4, #3b82f6, #8b5cf6, #06b6d4)',
-                ],
-              }}
-              transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
-            />
-            
-            {/* Main Badge */}
-            <div className="relative flex items-center gap-3 px-8 py-3 rounded-full bg-gray-900/90 backdrop-blur-xl border border-white/10 overflow-hidden">
-              {/* Shimmer Effect */}
-              <motion.div
-                className="absolute inset-0 opacity-30"
-                animate={{
-                  background: [
-                    'linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.3), transparent)',
-                    'linear-gradient(90deg, transparent, rgba(59, 130, 246, 0.3), transparent)',
-                    'linear-gradient(90deg, transparent, rgba(139, 92, 246, 0.3), transparent)',
-                  ],
-                  x: ['-100%', '200%']
-                }}
-                transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-              />
-              
-              {/* Animated Icon */}
-              <motion.div className="relative flex items-center justify-center w-5 h-5">
-                <motion.div
-                  className="absolute w-2 h-2 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500"
-                  animate={{
-                    boxShadow: [
-                      '0 0 8px rgba(6, 182, 212, 0.8)',
-                      '0 0 16px rgba(59, 130, 246, 0.8)',
-                      '0 0 8px rgba(6, 182, 212, 0.8)',
-                    ]
-                  }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                />
-                <motion.svg
-                  className="w-5 h-5 text-cyan-400"
-                  animate={{ rotate: 360 }}
-                  transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2}
-                >
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </motion.svg>
-              </motion.div>
-              
-              {/* Text with Gradient */}
-              <span className="relative text-sm font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent tracking-[0.2em]">
-                NEXT GEN AI PLATFORM
-              </span>
-              
-              {/* Sparkle Effect */}
-              <motion.div
-                className="absolute right-4 w-1 h-1 rounded-full bg-white"
-                animate={{
-                  scale: [0, 1, 0],
-                  opacity: [0, 1, 0],
-                }}
-                transition={{
-                  duration: 2,
-                  repeat: Infinity,
-                  repeatDelay: 1,
-                }}
-              />
-            </div>
-          </motion.div>
-        </motion.div>
+        {/* Badge - now a simple label, not a button */}
+        <div className="mb-12 flex justify-center">
+          <span className="text-base font-bold bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-400 bg-clip-text text-transparent tracking-[0.2em] select-none uppercase">
+            NEXT GEN AI PLATFORM
+          </span>
+        </div>
 
         {/* Cinematic Title with Advanced Animation */}
         <div className="mb-12 text-center">

@@ -1,306 +1,345 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Rocket, Target, Brain, Shield, Users, Zap, CheckCircle2 } from 'lucide-react';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import {
+  Rocket, Target, Brain, Shield, Users, Zap,
+  Code, ArrowRight, Plus, X,
+} from 'lucide-react';
 
 const AboutPage = () => {
-  const coreValues = [
-    {
-      title: 'Mission-Driven',
-      description: 'Building AI systems that create measurable business impact, not experiments.',
-      icon: Rocket,
-      color: 'from-cyan-500 to-blue-500'
-    },
-    {
-      title: 'Owned Execution',
-      description: 'Systems designed for handoff. Your team owns it from day one.',
-      icon: Target,
-      color: 'from-blue-500 to-purple-500'
-    },
-    {
-      title: 'Enterprise Scale',
-      description: 'Built for real ops. Production-ready, governed, and resilient.',
-      icon: Brain,
-      color: 'from-purple-500 to-pink-500'
-    },
-    {
-      title: 'Transparent Partnership',
-      description: 'Clear outcomes, fixed scope, clear accountability. No surprises.',
-      icon: Shield,
-      color: 'from-pink-500 to-red-500'
-    },
-    {
-      title: 'Continuous Innovation',
-      description: 'Frontier models + proven patterns = systems that stay ahead.',
-      icon: Zap,
-      color: 'from-red-500 to-orange-500'
-    },
-    {
-      title: 'Human-Centered',
-      description: 'AI augments teams, never replaces judgment. Your expertise matters.',
-      icon: Users,
-      color: 'from-orange-500 to-yellow-500'
-    }
+  const fadeInUp = {
+    hidden: { opacity: 0, y: 40 },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.65, ease: [0.22, 1, 0.36, 1] } }
+  };
+  const staggerContainer = {
+    hidden: { opacity: 0 },
+    visible: { opacity: 1, transition: { staggerChildren: 0.09, delayChildren: 0.1 } }
+  };
+  const [openIdx, setOpenIdx] = useState(null);
+  const members = [
+    { name: 'Ramnath T.', role: 'Chief Executive Officer', bio: 'Sets the mission and owns accountability across every client engagement. Obsessed with outcomes over optics.', initial: 'R', accent: '#3b82f6', glowColor: 'rgba(59,130,246,0.18)' },
+    { name: 'Arjun S.', role: 'Chief Technology Officer', bio: 'Architects the AI systems. Deep in LLMs, inference, and production-grade infrastructure that actually holds at scale.', initial: 'A', accent: '#06b6d4', glowColor: 'rgba(6,182,212,0.18)' },
+    { name: 'Divya M.', role: 'Chief Operating Officer', bio: 'Runs delivery. Keeps every project on scope, on time, and handed off cleanly — no exceptions.', initial: 'D', accent: '#8b5cf6', glowColor: 'rgba(139,92,246,0.18)' },
+    { name: 'Kiran P.', role: 'Head of Delivery', bio: "The client's closest partner from kickoff to launch. Translates business needs into what engineering actually builds.", initial: 'K', accent: '#10b981', glowColor: 'rgba(16,185,129,0.18)' },
   ];
-
-  const stats = [
-    { value: '50+', label: 'Enterprise Systems Built' },
-    { value: '98%', label: 'Success Rate' },
-    { value: '$500M+', label: 'Outcomes Generated' },
-    { value: '24/7', label: 'Support & Evolution' }
+  const expertise = [
+    { title: 'AI Engineers', description: 'Deep expertise in LLMs, inference optimization, and production-grade architectures built to scale.', icon: Code, color: 'text-blue-400', iconBg: 'bg-blue-500/10', iconBorder: 'border-blue-500/20' },
+    { title: 'Product Leaders', description: 'Built products used by millions. We know what production actually means — and what it costs when it fails.', icon: Rocket, color: 'text-cyan-400', iconBg: 'bg-cyan-500/10', iconBorder: 'border-cyan-500/20' },
+    { title: 'Enterprise Operators', description: "Years deploying systems across regulated industries globally. We know the compliance, governance, and ops layers cold.", icon: Shield, color: 'text-indigo-400', iconBg: 'bg-indigo-500/10', iconBorder: 'border-indigo-500/20' }
   ];
+  const marqueeItems = ['Production-Ready','Enterprise-Grade','Team-Owned','Scalable by Design','Measurable Outcomes','Frontier Models','Always Evolving','Built to Last'];
 
   return (
-    <div className="bg-gray-900 text-white overflow-x-hidden">
-      {/* ========== HERO SECTION ========== */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20" style={{ contain: 'layout' }}>
-        {/* Background */}
+    <div className="bg-gradient-to-b from-[#0a0d14] via-[#0d1117] to-[#0a0d14] min-h-screen overflow-hidden">
+      <div className="pointer-events-none fixed inset-0 z-0">
+        <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-blue-600/8 blur-[120px]" />
+        <div className="absolute top-1/3 -right-40 w-[500px] h-[500px] rounded-full bg-indigo-600/8 blur-[100px]" />
+        <div className="absolute bottom-1/4 -left-20 w-[400px] h-[400px] rounded-full bg-cyan-600/6 blur-[90px]" />
+        <div className="absolute -bottom-40 -right-40 w-[600px] h-[600px] rounded-full bg-blue-700/8 blur-[120px]" />
+        <div className="absolute top-1/2 left-1/4 w-[300px] h-[300px] rounded-full bg-indigo-500/5 blur-[80px]" />
+        <div className="absolute bottom-1/3 right-1/4 w-[350px] h-[350px] rounded-full bg-cyan-700/6 blur-[80px]" />
+        <div className="absolute inset-0 opacity-[0.18]" style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.35) 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
+      </div>
+      <div className="fixed top-0 left-0 right-0 z-50 pointer-events-none">
+        <div className="h-px bg-gradient-to-r from-transparent via-blue-500/60 to-transparent" />
+        <div className="h-8 bg-gradient-to-b from-blue-500/10 to-transparent" />
+      </div>
+
+      {/* HERO */}
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
         <div className="absolute inset-0 z-0">
-          <div 
-            className="absolute inset-0 bg-cover bg-center will-change-auto"
-            style={{ 
-              backgroundImage: 'url(https://images.unsplash.com/photo-1552664730-d307ca884978?w=1920&q=80)',
-              backgroundAttachment: 'fixed',
-              contain: 'strict'
-            }}
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-gray-900/70 via-gray-900/50 to-gray-900/80" />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-transparent to-black/40" />
+          <div className="absolute inset-0 bg-cover bg-center opacity-10" style={{ backgroundImage: "url('/images/xendex.webp')" }} />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#0a0d14]/50 via-transparent to-[#0a0d14]" />
         </div>
-
-        {/* Animated orbs - minimal */}
-        <div className="absolute inset-0 overflow-hidden z-10" style={{ contain: 'layout paint' }}>
-          <motion.div
-            className="absolute top-1/3 left-1/4 w-96 h-96 bg-cyan-500/15 rounded-full blur-2xl"
-            animate={{ opacity: [0.3, 0.45, 0.3] }}
-            transition={{ duration: 6, repeat: Infinity }}
-          />
-          <motion.div
-            className="absolute bottom-1/4 right-1/3 w-96 h-96 bg-purple-500/15 rounded-full blur-2xl"
-            animate={{ opacity: [0.2, 0.35, 0.2] }}
-            transition={{ duration: 8, repeat: Infinity, delay: 1 }}
-          />
-        </div>
-
-        {/* Hero Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <p className="text-cyan-400 font-semibold mb-6 tracking-wider uppercase text-sm">About Xendex AI</p>
-            <h1 className="text-6xl sm:text-7xl lg:text-8xl font-black mb-8 leading-tight">
-              <span className="bg-gradient-to-r from-white via-cyan-200 to-purple-300 bg-clip-text text-transparent">
-                We Build, Not Experiment
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div initial="hidden" animate="visible" variants={staggerContainer} className="text-center">
+            <motion.div variants={fadeInUp} className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500/20 bg-blue-500/5 mb-10">
+              <span className="relative flex h-2 w-2">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75" />
+                <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-500" />
               </span>
-            </h1>
-            <p className="text-xl sm:text-2xl text-zinc-300 max-w-4xl mx-auto leading-relaxed font-light mb-12">
-              AI systems that deliver measurable business outcomes. Owned by your team. Built for enterprise scale.
-            </p>
-            <motion.button
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="px-10 py-4 bg-gradient-to-r from-cyan-500 to-blue-600 text-white font-bold rounded-xl shadow-xl shadow-cyan-500/20 hover:shadow-2xl hover:shadow-cyan-500/30 transition-all flex items-center gap-2 mx-auto"
-            >
-              Explore Our Systems <ArrowRight className="w-5 h-5" />
-            </motion.button>
+              <span className="text-xs font-normal text-blue-400/80 tracking-widest uppercase">About Xendex AI</span>
+            </motion.div>
+            <motion.h1 variants={fadeInUp} className="text-6xl sm:text-7xl lg:text-[90px] font-normal text-white leading-[1.05] mb-8 tracking-tight">
+              We Build.<br />
+              <span className="bg-gradient-to-r from-blue-400 via-indigo-300 to-cyan-300 bg-clip-text text-transparent">Not Experiment.</span>
+            </motion.h1>
+            <motion.p variants={fadeInUp} className="text-lg sm:text-xl text-white/40 font-normal max-w-2xl mx-auto leading-relaxed mb-20">
+              AI systems that deliver measurable business outcomes. Owned by your team. Engineered for enterprise scale. Built to last.
+            </motion.p>
+            <motion.div variants={fadeInUp} className="relative overflow-hidden border-y border-white/[0.05] py-4">
+              <div className="flex animate-marquee whitespace-nowrap">
+                {[...marqueeItems, ...marqueeItems, ...marqueeItems, ...marqueeItems].map((item, i) => (
+                  <span key={i} className="inline-flex items-center gap-8 mx-8 text-xs font-normal tracking-widest uppercase text-white/20">
+                    {item}<span className="w-1 h-1 rounded-full bg-blue-500/30 flex-shrink-0" />
+                  </span>
+                ))}
+              </div>
+            </motion.div>
           </motion.div>
         </div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ duration: 2.5, repeat: Infinity }}
-          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 pointer-events-none"
-        >
-          <div className="flex flex-col items-center gap-2">
-            <p className="text-xs text-zinc-400 uppercase tracking-widest">Scroll to explore</p>
-            <svg className="w-6 h-6 text-cyan-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
-            </svg>
-          </div>
+        <motion.div animate={{ y: [0, 10, 0] }} transition={{ duration: 2.5, repeat: Infinity }} className="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 pointer-events-none">
+          <div className="w-px h-14 bg-gradient-to-b from-blue-500/40 to-transparent mx-auto" />
         </motion.div>
       </section>
 
-      {/* ========== OUR MISSION ========== */}
-      <section className="py-32 px-4 sm:px-6 lg:px-8 bg-gray-950" style={{ contain: 'layout' }}>
+      {/* MISSION */}
+      <section className="py-32 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-16 items-center mb-32">
-            <div>
-              <h2 className="text-5xl sm:text-6xl font-black text-white mb-6 leading-tight">
-                Our Mission
-              </h2>
-              <p className="text-xl text-zinc-300 leading-relaxed mb-6">
-                Enterprise AI isn't about the latest model. It's about systems that work. Systems your teams understand. Systems that scale without drama.
-              </p>
-              <p className="text-lg text-zinc-400 leading-relaxed">
-                We partner with enterprises to build AI that's owned, understood, and continuously evolved by your people.
-              </p>
-            </div>
-            <div className="rounded-2xl overflow-hidden border-2 border-cyan-500/30 shadow-2xl">
-              <img
-                src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80"
-                alt="Mission"
-                loading="lazy"
-                className="w-full h-96 object-cover"
-              />
-            </div>
-          </div>
-
-          {/* Stats Grid */}
-          <div className="grid md:grid-cols-4 gap-6">
-            {stats.map((stat, idx) => (
-              <div
-                key={idx}
-                className="p-8 bg-gradient-to-br from-zinc-900 to-zinc-950 rounded-2xl border border-zinc-800 hover:border-cyan-500/50 transition-all"
-              >
-                <div className="text-5xl font-black bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent mb-2">
-                  {stat.value}
-                </div>
-                <div className="text-zinc-400">{stat.label}</div>
-              </div>
-            ))}
+          <div className="grid lg:grid-cols-2 gap-24 items-start">
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={staggerContainer}>
+              <motion.p variants={fadeInUp} className="text-xs font-normal text-blue-400/80 tracking-widest uppercase mb-6">Our Mission</motion.p>
+              <motion.h2 variants={fadeInUp} className="text-5xl sm:text-6xl font-normal text-white leading-tight mb-10">
+                Enterprise AI that actually works
+              </motion.h2>
+              <motion.div variants={fadeInUp} className="relative pl-6 mb-10">
+                <div className="absolute left-0 top-0 bottom-0 w-px bg-gradient-to-b from-blue-500/60 via-blue-500/20 to-transparent" />
+                <p className="text-xl font-normal text-white/60 leading-relaxed">
+                  "The gap between proof-of-concept and production is where most AI projects die. We close that gap."
+                </p>
+              </motion.div>
+              <motion.p variants={fadeInUp} className="text-base text-white/40 font-normal leading-relaxed mb-4">
+                Enterprise AI isn't about the latest model. It's about systems that work — systems your teams understand, systems that scale without drama.
+              </motion.p>
+              <motion.p variants={fadeInUp} className="text-base text-white/40 font-normal leading-relaxed">
+                We partner with enterprises to build AI that's owned, understood, and continuously evolved by your people — not locked inside a vendor's black box.
+              </motion.p>
+            </motion.div>
+            <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={staggerContainer} className="grid grid-cols-2 gap-px bg-white/5 rounded-2xl overflow-hidden">
+              {[
+                { icon: Rocket, color: 'text-blue-400', iconBg: 'bg-blue-500/10', iconBorder: 'border-blue-500/20', topLine: 'via-blue-500/40', label: 'Production-Grade', sub: 'No proof-of-concept theater. Real systems your ops can depend on.' },
+                { icon: Users, color: 'text-cyan-400', iconBg: 'bg-cyan-500/10', iconBorder: 'border-cyan-500/20', topLine: 'via-cyan-500/40', label: 'Team-Owned', sub: 'Handoff is built into the architecture. Your team runs it end-to-end.' },
+                { icon: Zap, color: 'text-indigo-400', iconBg: 'bg-indigo-500/10', iconBorder: 'border-indigo-500/20', topLine: 'via-indigo-500/40', label: 'Always Evolving', sub: 'We evolve your stack as models and business needs shift beneath it.' },
+                { icon: Shield, color: 'text-violet-400', iconBg: 'bg-violet-500/10', iconBorder: 'border-violet-500/20', topLine: 'via-violet-500/40', label: 'Full Visibility', sub: 'No black boxes. Clear scope, clear accountability at every stage.' },
+                { icon: Target, color: 'text-amber-400', iconBg: 'bg-amber-500/10', iconBorder: 'border-amber-500/20', topLine: 'via-amber-500/40', label: 'Outcome-Aligned', sub: 'ROI is the only metric that matters. Everything is built around it.' },
+                { icon: Brain, color: 'text-emerald-400', iconBg: 'bg-emerald-500/10', iconBorder: 'border-emerald-500/20', topLine: 'via-emerald-500/40', label: 'Frontier Models', sub: 'State-of-the-art AI paired with battle-tested enterprise architecture.' }
+              ].map((item, idx) => {
+                const ItemIcon = item.icon;
+                return (
+                  <motion.div key={idx} variants={fadeInUp} className="group relative bg-[#0d1117] p-6 hover:bg-[#0f1520] transition-colors duration-300 overflow-hidden">
+                    <div className={`absolute top-0 left-1/4 right-1/4 h-px bg-gradient-to-r from-transparent ${item.topLine} to-transparent`} />
+                    <div className={`w-9 h-9 rounded-xl ${item.iconBg} border ${item.iconBorder} flex items-center justify-center mb-4`}>
+                      <ItemIcon className={`w-4 h-4 ${item.color}`} />
+                    </div>
+                    <p className="text-sm font-normal text-white mb-1.5">{item.label}</p>
+                    <p className="text-xs text-white/35 font-normal leading-relaxed">{item.sub}</p>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* ========== CORE VALUES ========== */}
-      <section className="py-32 px-4 sm:px-6 lg:px-8 bg-zinc-950" style={{ contain: 'layout' }}>
+      {/* BUILT DIFFERENT */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl sm:text-6xl font-black text-white mb-6">
-              How We Work
-            </h2>
-            <p className="text-xl text-zinc-400 max-w-3xl mx-auto">
-              Our core principles guide every engagement, every system, every decision.
-            </p>
-          </div>
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={staggerContainer} className="relative border border-white/5 rounded-2xl bg-white/[0.02] overflow-hidden p-12 sm:p-20">
+            <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-blue-500/30 rounded-tl-2xl" />
+            <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-blue-500/30 rounded-tr-2xl" />
+            <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-blue-500/30 rounded-bl-2xl" />
+            <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-blue-500/30 rounded-br-2xl" />
+            <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 via-transparent to-indigo-600/5 pointer-events-none" />
+            <div className="relative z-10 grid lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <motion.p variants={fadeInUp} className="text-xs font-normal text-blue-400/80 tracking-widest uppercase mb-6">Built Different</motion.p>
+                <motion.h2 variants={fadeInUp} className="text-4xl sm:text-5xl font-normal text-white leading-tight mb-8">
+                  We started because enterprise AI implementations were failing
+                </motion.h2>
+                <motion.p variants={fadeInUp} className="text-base text-white/40 font-normal leading-relaxed mb-4">
+                  Projects got stuck between proof-of-concept and production. Teams inherited black boxes they couldn't operate, maintain, or evolve.
+                </motion.p>
+                <motion.p variants={fadeInUp} className="text-base text-white/40 font-normal leading-relaxed">
+                  So we built a different way — systems designed for your teams to own, architectures that scale, and processes that keep pace with frontier models.
+                </motion.p>
+              </div>
+              <motion.div variants={staggerContainer} className="grid grid-cols-2 gap-px bg-white/5 rounded-xl overflow-hidden">
+                {[
+                  { stat: '3 weeks', label: 'Average time to first production deployment' },
+                  { stat: '100%', label: 'Of clients operate their own systems post-handoff' },
+                  { stat: '0', label: 'Black-box systems delivered. Ever.' },
+                  { stat: '∞', label: 'Continued evolution support after launch' }
+                ].map((item, idx) => (
+                  <motion.div key={idx} variants={fadeInUp} className="bg-[#0d1117] p-6 hover:bg-[#0f1520] transition-colors duration-200">
+                    <div className="text-3xl font-normal text-white mb-2">{item.stat}</div>
+                    <div className="text-xs text-white/30 font-normal leading-snug">{item.label}</div>
+                  </motion.div>
+                ))}
+              </motion.div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {coreValues.map((value, idx) => {
-              const Icon = value.icon;
-              return (
-                <div
-                  key={idx}
-                  className="group relative p-8 bg-gradient-to-br from-zinc-900 to-zinc-950 rounded-2xl border border-zinc-800 hover:border-cyan-500/50 transition-all overflow-hidden hover:shadow-lg hover:shadow-cyan-500/10"
-                >
-                  <div className={`absolute inset-0 bg-gradient-to-br ${value.color} opacity-0 group-hover:opacity-5 transition-opacity duration-300 rounded-2xl`} />
-                  <div className="relative z-10">
-                    <div className={`inline-flex p-3 rounded-lg bg-gradient-to-br ${value.color} bg-opacity-10 mb-4`}>
-                      <Icon className="w-6 h-6 text-cyan-400" />
+      {/* EXPERTISE */}
+      <section className="py-24 px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto">
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={staggerContainer} className="grid lg:grid-cols-[1fr_1.4fr] gap-20 items-start">
+            <div>
+              <motion.p variants={fadeInUp} className="text-xs font-normal text-blue-400/80 tracking-widest uppercase mb-6">The Team</motion.p>
+              <motion.h2 variants={fadeInUp} className="text-5xl sm:text-6xl font-normal text-white leading-tight mb-8">
+                Built by<br />builders
+              </motion.h2>
+              <motion.p variants={fadeInUp} className="text-base text-white/40 font-normal leading-relaxed">
+                Engineers, product leaders, and AI researchers who've shipped at enterprise scale. We don't advise from the sidelines — we build alongside you.
+              </motion.p>
+            </div>
+            <motion.div variants={staggerContainer} className="space-y-px bg-white/5 rounded-2xl overflow-hidden">
+              {expertise.map((role, idx) => {
+                const RoleIcon = role.icon;
+                return (
+                  <motion.div key={idx} variants={fadeInUp} className="group bg-[#0d1117] p-8 hover:bg-[#0f1520] transition-colors duration-300">
+                    <div className="flex items-start gap-6">
+                      <div className={`flex-shrink-0 w-12 h-12 rounded-xl ${role.iconBg} border ${role.iconBorder} flex items-center justify-center`}>
+                        <RoleIcon className={`w-6 h-6 ${role.color}`} />
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-normal text-white mb-2">{role.title}</h3>
+                        <p className="text-sm text-white/40 font-normal leading-relaxed">{role.description}</p>
+                      </div>
                     </div>
-                    <h3 className="text-2xl font-bold text-white mb-3">{value.title}</h3>
-                    <p className="text-zinc-400 leading-relaxed">{value.description}</p>
+                  </motion.div>
+                );
+              })}
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* TEAM */}
+      <section className="py-32 px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="max-w-7xl mx-auto">
+
+          <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={staggerContainer} className="mb-16">
+            <motion.p variants={fadeInUp} className="text-xs font-normal text-blue-400/80 tracking-widest uppercase mb-5">The Team</motion.p>
+            <motion.h2 variants={fadeInUp} className="text-5xl sm:text-6xl font-normal text-white leading-tight">
+              The people behind
+              <span className="text-white/30"> every build.</span>
+            </motion.h2>
+            <motion.p variants={fadeInUp} className="mt-6 text-base text-white/35 font-normal max-w-xl">
+              A focused team with deep roots in AI engineering, enterprise product, and global operations.
+            </motion.p>
+          </motion.div>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            {members.map((member, idx) => {
+              const isOpen = openIdx === idx;
+              return (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 40 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '-40px' }}
+                transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: idx * 0.08 }}
+                className="relative rounded-2xl bg-[#080b12] border overflow-hidden transition-colors duration-300 h-[360px]"
+                style={{ borderColor: isOpen ? `${member.accent}40` : 'rgba(255,255,255,0.06)' }}
+              >
+                {/* ── AVATAR STAGE (always visible) ── */}
+                <div className="absolute inset-0 flex flex-col">
+                  {/* Dot texture */}
+                  <div className="absolute inset-0 opacity-[0.07]" style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.5) 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+                  {/* Bottom glow */}
+                  <div className="absolute inset-0 transition-opacity duration-500"
+                    style={{ background: `radial-gradient(ellipse 90% 60% at 50% 110%, ${member.glowColor} 0%, transparent 70%)`, opacity: isOpen ? 0.4 : 0.7 }}
+                  />
+                  {/* Monogram — centred in upper portion */}
+                  <div className="flex-1 flex items-center justify-center">
+                    <div
+                      className="w-24 h-24 rounded-full flex items-center justify-center border text-4xl font-normal"
+                      style={{
+                        background: `radial-gradient(circle at 40% 35%, ${member.glowColor.replace('0.18', '0.35')}, transparent 65%), #0d1117`,
+                        borderColor: `${member.accent}30`,
+                        color: member.accent,
+                      }}
+                    >
+                      {member.initial}
+                    </div>
+                  </div>
+                  {/* Name + toggle button row pinned to bottom */}
+                  <div className="relative z-10 flex items-center justify-between px-6 pb-6 pt-4">
+                    <div>
+                      <p className="text-[10px] font-normal tracking-[0.18em] uppercase mb-1" style={{ color: `${member.accent}99` }}>{member.role}</p>
+                      <h3 className="text-lg font-normal text-white leading-snug">{member.name}</h3>
+                    </div>
+                    <button
+                      onClick={() => setOpenIdx(isOpen ? null : idx)}
+                      className="flex-shrink-0 w-9 h-9 rounded-full flex items-center justify-center border transition-all duration-300"
+                      style={{
+                        borderColor: `${member.accent}50`,
+                        background: isOpen ? member.accent : 'transparent',
+                        color: isOpen ? '#000' : member.accent,
+                      }}
+                    >
+                      {isOpen ? <X className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+                    </button>
                   </div>
                 </div>
-              );
+
+                {/* ── REVEAL PANEL (slides up from bottom on click) ── */}
+                <AnimatePresence>
+                  {isOpen && (
+                    <motion.div
+                      key="panel"
+                      initial={{ y: '100%' }}
+                      animate={{ y: 0 }}
+                      exit={{ y: '100%' }}
+                      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                      className="absolute inset-x-0 bottom-0 z-20 rounded-b-2xl px-6 py-7 flex flex-col"
+                      style={{ background: `linear-gradient(160deg, #0d1321 0%, #080d18 100%)`, borderTop: `1px solid ${member.accent}25` }}
+                    >
+                      {/* Close */}
+                      <button
+                        onClick={() => setOpenIdx(null)}
+                        className="absolute top-4 right-4 w-7 h-7 rounded-full flex items-center justify-center transition-colors duration-200"
+                        style={{ color: `${member.accent}80` }}
+                      >
+                        <X className="w-4 h-4" />
+                      </button>
+                      {/* Name */}
+                      <h3 className="text-lg font-normal text-white mb-1 pr-8">{member.name}</h3>
+                      {/* Role pill */}
+                      <span
+                        className="inline-block text-[10px] font-normal tracking-[0.16em] uppercase px-3 py-1 rounded-full mb-5 w-fit"
+                        style={{ background: `${member.accent}15`, color: member.accent, border: `1px solid ${member.accent}30` }}
+                      >
+                        {member.role}
+                      </span>
+                      {/* Bio */}
+                      <p className="text-sm text-white/50 font-normal leading-relaxed">{member.bio}</p>
+                      {/* Accent line at bottom */}
+                      <div className="mt-6 h-px w-full rounded-full" style={{ background: `linear-gradient(90deg, ${member.accent}50, transparent)` }} />
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </motion.div>
+            );
             })}
           </div>
         </div>
       </section>
 
-      {/* ========== OUR STORY ========== */}
-      <section className="py-32 px-4 sm:px-6 lg:px-8 bg-gray-950" style={{ contain: 'layout' }}>
-        <div className="max-w-7xl mx-auto">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <div className="order-2 md:order-1">
-              <div className="rounded-2xl overflow-hidden border-2 border-purple-500/30 shadow-2xl">
-                <img
-                  src="https://images.unsplash.com/photo-1552664730-d307ca884978?w=600&q=80"
-                  alt="Story"
-                  loading="lazy"
-                  className="w-full h-96 object-cover"
-                />
-              </div>
-            </div>
-            <div className="order-1 md:order-2">
-              <h2 className="text-5xl sm:text-6xl font-black text-white mb-6 leading-tight">
-                Built for Enterprise
-              </h2>
-              <p className="text-xl text-zinc-300 leading-relaxed mb-6">
-                We started because enterprise AI implementations were failing. Projects got stuck between proof-of-concept and production. Teams inherited black boxes.
-              </p>
-              <p className="text-lg text-zinc-400 leading-relaxed mb-8">
-                So we built a different way. Systems designed for your teams to own. Architectures that scale. Processes that keep pace with frontier models.
-              </p>
-              
-              <div className="space-y-4">
-                {['Production-grade from day one', 'Designed for your team to operate', 'Continuous evolution, not reinvention'].map((item, idx) => (
-                  <div key={idx} className="flex items-start gap-3">
-                    <CheckCircle2 className="w-6 h-6 text-cyan-400 flex-shrink-0 mt-1" />
-                    <p className="text-white text-lg">{item}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
+      {/* CTA */}
+      <section className="py-32 px-4 sm:px-6 lg:px-8 relative z-10 overflow-hidden">
+        <div className="absolute left-1/4 top-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-blue-600/8 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute right-1/4 top-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-indigo-600/8 rounded-full blur-[100px] pointer-events-none" />
+        <div className="h-px bg-gradient-to-r from-transparent via-white/5 to-transparent mb-32 max-w-4xl mx-auto" />
+        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true, margin: '-80px' }} variants={staggerContainer} className="relative z-10 max-w-3xl mx-auto text-center">
+          <motion.p variants={fadeInUp} className="text-xs font-normal text-blue-400/80 tracking-widest uppercase mb-6">Get Started</motion.p>
+          <motion.h2 variants={fadeInUp} className="text-5xl sm:text-6xl font-normal text-white mb-6">
+            Ready to build real AI?
+          </motion.h2>
+          <div className="h-px w-16 bg-gradient-to-r from-transparent via-blue-400 to-transparent mx-auto mb-8" />
+          <motion.p variants={fadeInUp} className="text-base text-white/40 font-normal mb-12">
+            Let's talk about what AI ownership means for your organization.
+          </motion.p>
+          <motion.div variants={fadeInUp} className="flex flex-wrap justify-center gap-4">
+            <button className="px-10 py-5 bg-white/5 backdrop-blur-sm text-white text-base font-normal rounded-xl border border-white/10 hover:border-white/20 hover:bg-white/8 transition-all duration-300 flex items-center gap-2">
+              Schedule a Conversation
+              <ArrowRight className="w-4 h-4" />
+            </button>
+          </motion.div>
+        </motion.div>
       </section>
 
-      {/* ========== TEAM ========== */}
-      <section className="py-32 px-4 sm:px-6 lg:px-8 bg-zinc-950" style={{ contain: 'layout' }}>
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-20">
-            <h2 className="text-5xl sm:text-6xl font-black text-white mb-6">
-              Built by Builders
-            </h2>
-            <p className="text-xl text-zinc-400 max-w-3xl mx-auto">
-              Engineers, product leaders, and AI researchers who've shipped at scale.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            {[
-              {
-                name: 'AI Engineers',
-                description: 'Deep expertise in LLMs, inference optimization, and production architectures.',
-                icon: '🤖'
-              },
-              {
-                name: 'Product Leaders',
-                description: 'Built products used by millions. Know what production actually means.',
-                icon: '🚀'
-              },
-              {
-                name: 'Enterprise Operators',
-                description: 'Years of experience deploying systems across regulated industries.',
-                icon: '⚙️'
-              }
-            ].map((role, idx) => (
-              <div
-                key={idx}
-                className="p-8 bg-gradient-to-br from-zinc-900 to-zinc-950 rounded-2xl border border-zinc-800 hover:border-purple-500/50 transition-all group text-center hover:shadow-lg hover:shadow-purple-500/10"
-              >
-                <div className="text-5xl mb-4">{role.icon}</div>
-                <h3 className="text-2xl font-bold text-white mb-3">{role.name}</h3>
-                <p className="text-zinc-400 leading-relaxed">{role.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ========== CTA SECTION ========== */}
-      <section className="py-32 px-4 sm:px-6 lg:px-8 bg-gray-900 overflow-hidden relative" style={{ contain: 'layout' }}>
-        <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/10 via-purple-500/10 to-blue-500/10" />
-        
-        <div className="relative z-10 max-w-4xl mx-auto text-center">
-          <h2 className="text-5xl sm:text-6xl font-black text-white mb-6">
-            Ready to Build Real AI Systems?
-          </h2>
-          <p className="text-xl text-zinc-300 mb-12">
-            Let's talk about what ownership means for your organization.
-          </p>
-          
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="px-12 py-6 bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-lg font-bold rounded-xl shadow-xl shadow-cyan-500/30 hover:shadow-2xl hover:shadow-cyan-500/40 transition-all"
-          >
-            Schedule a Conversation
-          </motion.button>
-        </div>
-      </section>
     </div>
   );
 };

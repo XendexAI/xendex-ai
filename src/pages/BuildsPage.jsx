@@ -573,10 +573,6 @@ const BuildsPage = () => {
           </p>
           
           <div className="flex flex-wrap justify-center gap-6">
-            <button className="px-10 py-5 bg-gradient-to-r from-cyan-500 to-blue-600 text-white text-lg font-bold rounded-xl hover:shadow-2xl hover:shadow-cyan-500/50 transform hover:scale-105 transition-all duration-300 flex items-center gap-3">
-              <Zap className="w-6 h-6" />
-              Start Your Build
-            </button>
             <button className="px-10 py-5 bg-gray-800/70 backdrop-blur-sm text-white text-lg font-bold rounded-xl border-2 border-gray-700 hover:border-gray-600 hover:bg-gray-800 transition-all duration-300">
               Schedule Demo
             </button>

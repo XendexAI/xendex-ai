@@ -20,16 +20,18 @@ const MakeAIRealSection = () => {
   };
 
   return (
-    <section className="relative py-32 bg-gradient-to-b from-gray-900 via-gray-950 to-gray-900 overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0">
+    <section className="relative py-32 overflow-hidden" style={{ borderTop: '1px solid rgba(255,255,255,0.05)' }}>
+      {/* FiveVsSection-matching background */}
+      <div className="absolute inset-0" style={{ zIndex: 0, background: '#080b12' }} />
+      {/* Dot grid overlay */}
+      <div className="absolute inset-0 pointer-events-none" style={{ zIndex: 1, opacity: 0.18, backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.35) 1px, transparent 1px)', backgroundSize: '28px 28px' }} />
+      {/* Background image overlay (no gradient) */}
+      <div className="absolute inset-0" style={{ zIndex: 2 }}>
         <div 
           className="absolute inset-0 bg-cover bg-center bg-no-repeat opacity-75"
-          style={{ backgroundImage: 'url(/images/decorator2.jpg)' }}
+          // style={{ backgroundImage: 'url(/images/decorator2.jpg)' }}
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-900/90 via-gray-900/70 to-gray-900/90" />
       </div>
-      
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div
           initial="hidden"
@@ -45,30 +47,30 @@ const MakeAIRealSection = () => {
             </span>
           </motion.div>
 
-          {/* Main Title */}
+          {/* Main Title - reduced font size for consistency */}
           <motion.h2 
             variants={fadeInUp} 
-            className="text-6xl sm:text-7xl lg:text-8xl font-black mb-10 leading-none"
+            className="text-5xl sm:text-6xl lg:text-7xl font-black mb-10 leading-none"
           >
             <span className="bg-gradient-to-r from-zinc-200 via-white to-zinc-200 bg-clip-text text-transparent">
               Make AI Real
             </span>
           </motion.h2>
 
-          {/* Description */}
+          {/* Description - consistent color/weight */}
           <motion.p 
             variants={fadeInUp} 
-            className="text-base sm:text-lg text-zinc-400 mb-10 leading-relaxed max-w-4xl mx-auto font-light"
+            className="text-base sm:text-lg text-white/40 mb-10 leading-relaxed max-w-4xl mx-auto font-normal"
           >
             We don't experiment with AI. Our delivery models transform AI into real business systems combining tailored workflows, 
             production-ready builds, and fine-tuned intelligence designed to operate at scale.
           </motion.p>
 
-          {/* Subtitle with separators */}
+          {/* Subtitle with separators - consistent color */}
           <motion.div variants={fadeInUp} className="flex items-center justify-center gap-4 mb-16">
-            <span className="text-lg text-zinc-500">Power Your Business with AI</span>
+            <span className="text-lg text-white/25">Power Your Business with AI</span>
             <span className="w-1.5 h-1.5 rounded-full bg-brand-primary"></span>
-            <span className="text-lg text-zinc-500">Unlock Your Production AI</span>
+            <span className="text-lg text-white/25">Unlock Your Production AI</span>
           </motion.div>
 
           {/* XenPods & XenBuilds Cards */}
@@ -89,7 +91,6 @@ const MakeAIRealSection = () => {
             >
               {/* Glow effect */}
               <div className="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-600 rounded-2xl opacity-0 group-hover:opacity-20 blur-2xl transition-opacity duration-500" />
-              
               {/* Card */}
               <div className="relative bg-gradient-to-br from-zinc-900 via-zinc-900 to-zinc-950 rounded-2xl border-2 border-zinc-800 overflow-hidden p-6 h-full transition-all duration-300 group-hover:border-cyan-500/50">
                 {/* Top gradient bar */}
@@ -113,7 +114,6 @@ const MakeAIRealSection = () => {
                 </div>
               </div>
             </motion.div>
-
             <motion.div
               whileHover={{ scale: 1.03, y: -5 }}
               transition={{ type: "spring", stiffness: 300 }}
@@ -121,7 +121,6 @@ const MakeAIRealSection = () => {
             >
               {/* Glow effect */}
               <div className="absolute -inset-1 bg-gradient-to-r from-purple-500 to-fuchsia-600 rounded-2xl opacity-0 group-hover:opacity-20 blur-2xl transition-opacity duration-500" />
-              
               {/* Card */}
               <div className="relative bg-gradient-to-br from-zinc-900 via-zinc-900 to-zinc-950 rounded-2xl border-2 border-zinc-800 overflow-hidden p-6 h-full transition-all duration-300 group-hover:border-purple-500/50">
                 {/* Top gradient bar */}

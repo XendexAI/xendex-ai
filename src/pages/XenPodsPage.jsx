@@ -26,6 +26,16 @@ const XenPodsPage = () => {
       exit={{ opacity: 0 }}
       className="bg-gradient-to-b from-[#0a0d14] via-[#0d1117] to-[#0a0d14] min-h-screen"
     >
+      {/* Ambient background lights */}
+      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+        <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-blue-600/8 blur-[120px]" />
+        <div className="absolute top-1/3 -right-40 w-[500px] h-[500px] rounded-full bg-indigo-600/8 blur-[100px]" />
+        <div className="absolute bottom-1/4 -left-20 w-[400px] h-[400px] rounded-full bg-cyan-600/6 blur-[90px]" />
+        <div className="absolute -bottom-40 -right-40 w-[600px] h-[600px] rounded-full bg-blue-700/8 blur-[120px]" />
+        <div className="absolute top-1/2 left-1/4 w-[300px] h-[300px] rounded-full bg-indigo-500/5 blur-[80px]" />
+        <div className="absolute bottom-1/3 right-1/4 w-[350px] h-[350px] rounded-full bg-cyan-700/6 blur-[80px]" />
+        <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.35) 1px, transparent 1px)', backgroundSize: '28px 28px', opacity: 0.18 }} />
+      </div>
       {/* Hero Section */}
             <section className="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden flex items-center min-h-screen">
               <div className="absolute inset-0 overflow-hidden">
@@ -52,7 +62,7 @@ const XenPodsPage = () => {
                       <span className="font-normal text-white">Xen Pods</span>
                       {/* <span className="font-black bg-gradient-to-r from-blue-400 via-indigo-400 to-violet-400 bg-clip-text text-transparent">System</span> */}
                     </h1>
-                    <p className="text-lg sm:text-xl text-gray-300 font-normal max-w-4xl mx-auto leading-relaxed">
+                    <p className="text-lg sm:text-xl text-white/40 font-normal max-w-4xl mx-auto leading-relaxed">
                       From raw data to clear insights
                     </p>
                   </motion.div>
@@ -69,51 +79,9 @@ const XenPodsPage = () => {
               </div>
             </section>
 
-      {/* Hero Section - Second Title */}
-      <section className="relative py-24 px-4 sm:px-6 lg:px-8 overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-1/4 -left-1/4 w-[600px] h-[600px] bg-gradient-to-br from-cyan-500/20 via-blue-500/20 to-transparent rounded-full blur-3xl animate-pulse" />
-          <div className="absolute bottom-1/4 -right-1/4 w-[600px] h-[600px] bg-gradient-to-br from-indigo-500/20 via-purple-500/20 to-transparent rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }} />
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-px bg-gradient-to-r from-transparent via-blue-500/30 to-transparent" />
-        </div>
-
-        <div className="relative z-10 max-w-6xl mx-auto text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl mb-6 leading-tight">
-              <span className="font-normal text-white">Fixed-Scope AI Systems</span>
-            </h1>
-            
-            <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed mb-8">
-              Owned outcomes. Clear accountability. No handoff risk.
-            </p>
-            
-            <div className="flex flex-wrap justify-center gap-8 text-base text-gray-300">
-              <div className="flex items-center gap-2">
-                <span>Fixed Cost</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span>•</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span>Fixed Timeline</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span>•</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span>Full Transfer</span>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
       {/* Main Content */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 relative">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="h-px bg-gradient-to-r from-transparent via-white/5 to-transparent max-w-5xl mx-auto mb-20" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(59,130,246,0.05),transparent_50%),radial-gradient(circle_at_70%_80%,rgba(99,102,241,0.05),transparent_50%)]" />
         
         <motion.div
@@ -124,15 +92,13 @@ const XenPodsPage = () => {
           className="max-w-7xl mx-auto relative z-10"
         >
           <motion.div variants={fadeInUp} className="text-center mb-16">
-            <div className="inline-block mb-6">
-              <div className="h-px w-24 bg-gradient-to-r from-transparent via-blue-400 to-transparent mb-6 mx-auto" />
-            </div>
+            <p className="text-xs font-normal text-blue-400/80 tracking-widest uppercase mb-5">XenPods</p>
             <h2 className="text-5xl sm:text-6xl lg:text-7xl mb-6 leading-[1.1]">
               <span className="font-normal text-white">Project-Based</span>
               <br />
-              <span className="font-light bg-gradient-to-r from-blue-300 via-indigo-300 to-slate-300 bg-clip-text text-transparent">AI Delivery</span>
+              <span className="font-normal bg-gradient-to-r from-blue-300 via-indigo-300 to-slate-300 bg-clip-text text-transparent">AI Delivery</span>
             </h2>
-            <p className="text-lg sm:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl text-white/40 font-normal max-w-4xl mx-auto leading-relaxed">
               XenPods are project-based engagements designed to deliver production-ready AI systems with no handoff risk, no dependency, and complete ownership transfer.
             </p>
           </motion.div>
@@ -171,8 +137,8 @@ const XenPodsPage = () => {
                     </div>
                     <div className="h-px flex-1 bg-gradient-to-r from-white/20 to-transparent" />
                   </div>
-                  <h3 className="text-xl font-semibold text-white mb-3">{principle.title}</h3>
-                  <p className="text-gray-300 leading-relaxed">{principle.description}</p>
+                  <h3 className="text-xl font-normal text-white mb-3">{principle.title}</h3>
+                  <p className="text-white/40 font-normal leading-relaxed">{principle.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -181,10 +147,11 @@ const XenPodsPage = () => {
           {/* Three Tiers */}
           <motion.div variants={fadeInUp} className="mb-16">
             <div className="text-center mb-16">
+              <p className="text-xs font-normal text-blue-400/80 tracking-widest uppercase mb-5">Engagement Models</p>
               <h3 className="text-5xl sm:text-6xl lg:text-7xl mb-6 leading-tight">
                 <span className="font-normal text-white">Three Engagement Tiers</span>
               </h3>
-              <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto">
+              <p className="text-lg sm:text-xl text-white/40 font-normal max-w-2xl mx-auto">
                 Choose the engagement model that matches your ambition and capacity
               </p>
             </div>
@@ -205,23 +172,23 @@ const XenPodsPage = () => {
                   <span className="text-2xl text-cyan-400/60">→</span>
                 </div>
                 
-                <h4 className="text-2xl font-semibold text-white mb-3">Starter Pod</h4>
-                <p className="text-gray-300 mb-8 leading-relaxed text-[15px]">
+                <h4 className="text-2xl font-normal text-white mb-3">Starter Pod</h4>
+                <p className="text-white/40 font-normal mb-8 leading-relaxed text-[15px]">
                   For teams building their first AI system or testing a specific use case
                 </p>
 
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
                     <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-cyan-400 flex-shrink-0" />
-                    <p className="text-gray-300 leading-relaxed text-sm">Sprint-based execution (2-week cycles)</p>
+                    <p className="text-white/40 font-normal leading-relaxed text-sm">Sprint-based execution (2-week cycles)</p>
                   </div>
                   <div className="flex items-start gap-3">
                     <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-cyan-400 flex-shrink-0" />
-                    <p className="text-gray-300 leading-relaxed text-sm">1 AI Engineer + 1 Product Specialist</p>
+                    <p className="text-white/40 font-normal leading-relaxed text-sm">1 AI Engineer + 1 Product Specialist</p>
                   </div>
                   <div className="flex items-start gap-3">
                     <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-cyan-400 flex-shrink-0" />
-                    <p className="text-gray-300 leading-relaxed text-sm">Single defined outcome (e.g., conversational assistant, semantic search)</p>
+                    <p className="text-white/40 font-normal leading-relaxed text-sm">Single defined outcome (e.g., conversational assistant, semantic search)</p>
                   </div>
                 </div>
               </motion.div>
@@ -244,23 +211,23 @@ const XenPodsPage = () => {
                   <span className="text-2xl text-blue-400">↗</span>
                 </div>
                 
-                <h4 className="text-2xl font-bold text-white mb-3">Scale Pod</h4>
-                <p className="text-gray-200 mb-8 leading-relaxed text-[15px]">
+                <h4 className="text-2xl font-normal text-white mb-3">Scale Pod</h4>
+                <p className="text-white/50 font-normal mb-8 leading-relaxed text-[15px]">
                   For teams expanding AI capabilities across multiple domains
                 </p>
 
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
                     <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-blue-400 flex-shrink-0" />
-                    <p className="text-gray-200 leading-relaxed text-sm">Quarterly cadenced execution (3-month blocks)</p>
+                    <p className="text-white/50 font-normal leading-relaxed text-sm">Quarterly cadenced execution (3-month blocks)</p>
                   </div>
                   <div className="flex items-start gap-3">
                     <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-blue-400 flex-shrink-0" />
-                    <p className="text-gray-200 leading-relaxed text-sm">2 AI Engineers + 1 Product Specialist + 1 Delivery Manager</p>
+                    <p className="text-white/50 font-normal leading-relaxed text-sm">2 AI Engineers + 1 Product Specialist + 1 Delivery Manager</p>
                   </div>
                   <div className="flex items-start gap-3">
                     <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-blue-400 flex-shrink-0" />
-                    <p className="text-gray-200 leading-relaxed text-sm">Multiple integrated outcomes across systems</p>
+                    <p className="text-white/50 font-normal leading-relaxed text-sm">Multiple integrated outcomes across systems</p>
                   </div>
                 </div>
               </motion.div>
@@ -280,23 +247,23 @@ const XenPodsPage = () => {
                   <span className="text-2xl text-indigo-400/60">⇡</span>
                 </div>
                 
-                <h4 className="text-2xl font-semibold text-white mb-3">Center of Excellence</h4>
-                <p className="text-gray-300 mb-8 leading-relaxed text-[15px]">
+                <h4 className="text-2xl font-normal text-white mb-3">Center of Excellence</h4>
+                <p className="text-white/40 font-normal mb-8 leading-relaxed text-[15px]">
                   For organizations building internal AI practices at scale
                 </p>
 
                 <div className="space-y-3">
                   <div className="flex items-start gap-3">
                     <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-indigo-400 flex-shrink-0" />
-                    <p className="text-gray-300 leading-relaxed text-sm">Multi-track cadenced execution (6–12 month roadmap)</p>
+                    <p className="text-white/40 font-normal leading-relaxed text-sm">Multi-track cadenced execution (6–12 month roadmap)</p>
                   </div>
                   <div className="flex items-start gap-3">
                     <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-indigo-400 flex-shrink-0" />
-                    <p className="text-gray-300 leading-relaxed text-sm">3+ AI Engineers + 2+ Product Specialists + Delivery Manager + Strategic Advisor</p>
+                    <p className="text-white/40 font-normal leading-relaxed text-sm">3+ AI Engineers + 2+ Product Specialists + Delivery Manager + Strategic Advisor</p>
                   </div>
                   <div className="flex items-start gap-3">
                     <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-indigo-400 flex-shrink-0" />
-                    <p className="text-gray-300 leading-relaxed text-sm">Organizational AI transformation with governance</p>
+                    <p className="text-white/40 font-normal leading-relaxed text-sm">Organizational AI transformation with governance</p>
                   </div>
                 </div>
               </motion.div>
@@ -306,8 +273,10 @@ const XenPodsPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-b from-transparent via-blue-500/5 to-transparent" />
+      <section className="py-24 px-4 sm:px-6 lg:px-8 relative z-10 overflow-hidden">
+        <div className="h-px bg-gradient-to-r from-transparent via-white/5 to-transparent max-w-5xl mx-auto mb-24" />
+        <div className="absolute left-1/4 top-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-blue-600/8 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute right-1/4 top-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-indigo-600/8 rounded-full blur-[100px] pointer-events-none" />
         
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -316,31 +285,22 @@ const XenPodsPage = () => {
           transition={{ duration: 0.8 }}
           className="relative z-10 max-w-4xl mx-auto text-center"
         >
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl mb-6 leading-tight">
-            <span className="font-normal text-white">Ready to Build Your AI System?</span>
+          <p className="text-xs font-normal text-blue-400/80 tracking-widest uppercase mb-6">Get Started</p>
+          <h2 className="text-5xl sm:text-6xl font-normal text-white mb-6 leading-tight">
+            Ready to build your AI system?
           </h2>
-          
-          <p className="text-lg sm:text-xl text-gray-300 mb-12">
+          <div className="h-px w-16 bg-gradient-to-r from-transparent via-blue-400 to-transparent mx-auto mb-8" />
+          <p className="text-base text-white/40 font-normal mb-12">
             Let's design an engagement that matches your goals and timeline.
           </p>
-          
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex justify-center">
             <motion.a
               href="/contact"
-              whileHover={{ scale: 1.04 }}
+              whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="px-10 py-4 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white text-lg font-semibold rounded-xl shadow-lg transition-all"
+              className="px-10 py-5 bg-white/5 backdrop-blur-sm text-white text-base font-normal rounded-xl border border-white/10 hover:border-white/20 hover:bg-white/8 transition-all duration-300"
             >
-              Get Started
-            </motion.a>
-            
-            <motion.a
-              href="#learn-more"
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.98 }}
-              className="px-10 py-4 border border-white/20 text-white text-lg font-semibold rounded-xl hover:bg-white/5 transition-all"
-            >
-              View Case Studies
+              Contact Us
             </motion.a>
           </div>
         </motion.div>

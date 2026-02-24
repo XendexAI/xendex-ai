@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
+import { MessageSquare, FileSearch, BarChart2, TrendingUp, Brain, Link2, ArrowRight } from 'lucide-react';
 
 const XenBuildsPage = () => {
   const fadeInUp = {
@@ -27,6 +28,16 @@ const XenBuildsPage = () => {
       exit={{ opacity: 0 }}
       className="bg-gradient-to-b from-[#0a0d14] via-[#0d1117] to-[#0a0d14] min-h-screen"
     >
+      {/* Ambient background lights */}
+      <div className="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+        <div className="absolute -top-40 -left-40 w-[600px] h-[600px] rounded-full bg-blue-600/8 blur-[120px]" />
+        <div className="absolute top-1/3 -right-40 w-[500px] h-[500px] rounded-full bg-indigo-600/8 blur-[100px]" />
+        <div className="absolute bottom-1/4 -left-20 w-[400px] h-[400px] rounded-full bg-cyan-600/6 blur-[90px]" />
+        <div className="absolute -bottom-40 -right-40 w-[600px] h-[600px] rounded-full bg-blue-700/8 blur-[120px]" />
+        <div className="absolute top-1/2 left-1/4 w-[300px] h-[300px] rounded-full bg-indigo-500/5 blur-[80px]" />
+        <div className="absolute bottom-1/3 right-1/4 w-[350px] h-[350px] rounded-full bg-cyan-700/6 blur-[80px]" />
+        <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.35) 1px, transparent 1px)', backgroundSize: '28px 28px', opacity: 0.18 }} />
+      </div>
       {/* Hero Section */}
       <section className="relative pt-32 pb-24 px-4 sm:px-6 lg:px-8 overflow-hidden flex items-center min-h-screen">
               <div className="absolute inset-0 overflow-hidden">
@@ -52,7 +63,7 @@ const XenBuildsPage = () => {
               <h1 className="text-5xl sm:text-6xl lg:text-7xl mb-6 leading-tight">
                 <span className="font-normal text-white">Xen Builds</span>
               </h1>
-              <p className="text-lg sm:text-xl text-gray-300 font-normal max-w-4xl mx-auto leading-relaxed">
+              <p className="text-lg sm:text-xl text-white/40 font-normal max-w-4xl mx-auto leading-relaxed">
                 Production-grade AI systems, ready to deploy
               </p>
             </motion.div>
@@ -61,20 +72,25 @@ const XenBuildsPage = () => {
       </section>
 
       {/* Overview Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
+      <section className="relative py-20 px-4 sm:px-6 lg:px-8 z-10 overflow-hidden">
+        <div className="h-px bg-gradient-to-r from-transparent via-white/5 to-transparent max-w-5xl mx-auto mb-20" />
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-cyan-500/8 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-indigo-500/8 rounded-full blur-3xl translate-x-1/2 translate-y-1/2" />
+        </div>
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
-          className="max-w-6xl mx-auto"
+          className="relative z-10 max-w-6xl mx-auto"
         >
           <motion.div variants={fadeInUp} className="text-center mb-14">
-            <p className="text-xs tracking-[0.28em] text-blue-200/80 uppercase mb-4">XenBuilds</p>
+            <p className="text-xs font-normal text-blue-400/80 tracking-widest uppercase mb-5">XenBuilds</p>
             <h2 className="text-5xl sm:text-6xl lg:text-7xl mb-6 leading-tight">
               <span className="font-normal text-white">Production-Grade AI Systems</span>
             </h2>
-            <p className="text-lg sm:text-xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl text-white/40 font-normal max-w-4xl mx-auto leading-relaxed">
               XenBuilds are ready-to-deploy AI systems optimized for real operations. Built for teams that need tested, production-grade capabilities without the time and complexity of custom development.
             </p>
           </motion.div>
@@ -106,8 +122,8 @@ const XenBuildsPage = () => {
                 <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity" />
                 <div className={`absolute inset-0 bg-gradient-to-br ${principle.accent} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
                 <div className="relative">
-                  <h3 className="text-xl font-semibold text-white mb-3 group-hover:text-cyan-100 transition-colors">{principle.title}</h3>
-                  <p className="text-gray-300 leading-relaxed">{principle.description}</p>
+                  <h3 className="text-xl font-normal text-white mb-3 group-hover:text-cyan-100 transition-colors">{principle.title}</h3>
+                  <p className="text-white/40 font-normal leading-relaxed">{principle.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -116,7 +132,8 @@ const XenBuildsPage = () => {
       </section>
 
       {/* Capabilities Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0d1017]">
+      <section className="py-20 px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="h-px bg-gradient-to-r from-transparent via-white/5 to-transparent max-w-5xl mx-auto mb-20" />
         <motion.div
           initial="hidden"
           whileInView="visible"
@@ -125,10 +142,11 @@ const XenBuildsPage = () => {
           className="max-w-6xl mx-auto"
         >
           <motion.div variants={fadeInUp} className="text-center mb-14">
+            <p className="text-xs font-normal text-blue-400/80 tracking-widest uppercase mb-5">Capabilities</p>
             <h2 className="text-5xl sm:text-6xl lg:text-7xl mb-6 leading-tight">
               <span className="font-normal text-white">Core Capabilities</span>
             </h2>
-            <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl text-white/40 font-normal max-w-3xl mx-auto leading-relaxed">
               Every XenBuild comes with enterprise-grade capabilities built in from day one.
             </p>
           </motion.div>
@@ -138,37 +156,37 @@ const XenBuildsPage = () => {
               {
                 title: "Conversational AI",
                 description: "Natural language interfaces for seamless human-AI interaction with context awareness and multi-turn conversations.",
-                icon: "💬",
+                icon: MessageSquare,
                 accent: "cyan"
               },
               {
                 title: "Document Search & Analysis",
                 description: "Semantic search and intelligent document processing for rapid information retrieval and insight extraction.",
-                icon: "📄",
+                icon: FileSearch,
                 accent: "blue"
               },
               {
                 title: "Data Analysis",
                 description: "Automated exploratory analysis with pattern recognition, anomaly detection, and natural language reports.",
-                icon: "📊",
+                icon: BarChart2,
                 accent: "indigo"
               },
               {
                 title: "Fundamental Analysis",
                 description: "Financial data processing and analysis with predictive modeling and comprehensive reporting.",
-                icon: "💹",
+                icon: TrendingUp,
                 accent: "cyan"
               },
               {
                 title: "Intent Recognition",
                 description: "Advanced NLP for understanding user intent and routing to appropriate systems or workflows.",
-                icon: "🧠",
+                icon: Brain,
                 accent: "blue"
               },
               {
                 title: "Custom Integration",
                 description: "Seamless connection to your existing infrastructure, databases, and business applications.",
-                icon: "🔗",
+                icon: Link2,
                 accent: "indigo"
               }
             ].map((capability, idx) => {
@@ -187,9 +205,15 @@ const XenBuildsPage = () => {
                   <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-cyan-500 via-blue-500 to-indigo-500 opacity-0 group-hover:opacity-100 transition-opacity" />
                   <div className="absolute -top-12 -right-12 w-32 h-32 bg-white/5 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                   <div className="relative">
-                    <div className="text-3xl mb-4 group-hover:scale-110 transition-transform duration-300">{capability.icon}</div>
-                    <h3 className="text-lg font-semibold text-white mb-3 group-hover:text-cyan-100 transition-colors">{capability.title}</h3>
-                    <p className="text-gray-300 leading-relaxed text-sm">{capability.description}</p>
+                    <div className={`w-10 h-10 rounded-xl flex items-center justify-center mb-4 border transition-all duration-300 ${
+                    capability.accent === 'cyan' ? 'bg-cyan-500/10 border-cyan-500/20 text-cyan-400' :
+                    capability.accent === 'blue' ? 'bg-blue-500/10 border-blue-500/20 text-blue-400' :
+                    'bg-indigo-500/10 border-indigo-500/20 text-indigo-400'
+                  }`}>
+                    <capability.icon className="w-5 h-5" />
+                  </div>
+                    <h3 className="text-lg font-normal text-white mb-3 group-hover:text-cyan-100 transition-colors">{capability.title}</h3>
+                    <p className="text-white/40 font-normal leading-relaxed text-sm">{capability.description}</p>
                   </div>
                 </motion.div>
               );
@@ -199,19 +223,25 @@ const XenBuildsPage = () => {
       </section>
 
       {/* What You Get */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8 bg-[#0d1017]">
+      <section className="relative py-20 px-4 sm:px-6 lg:px-8 z-10 overflow-hidden">
+        <div className="h-px bg-gradient-to-r from-transparent via-white/5 to-transparent max-w-5xl mx-auto mb-20" />
+        <div className="absolute inset-0 pointer-events-none">
+          <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/8 rounded-full blur-3xl translate-x-1/2 -translate-y-1/2" />
+          <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-indigo-500/8 rounded-full blur-3xl -translate-x-1/2 translate-y-1/2" />
+        </div>
         <motion.div
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, margin: "-100px" }}
           variants={staggerContainer}
-          className="max-w-6xl mx-auto"
+          className="relative z-10 max-w-6xl mx-auto"
         >
           <motion.div variants={fadeInUp} className="text-center mb-14">
+            <p className="text-xs font-normal text-blue-400/80 tracking-widest uppercase mb-5">Delivery</p>
             <h2 className="text-5xl sm:text-6xl lg:text-7xl mb-6 leading-tight">
               <span className="font-normal text-white">What You Get</span>
             </h2>
-            <p className="text-lg sm:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-lg sm:text-xl text-white/40 font-normal max-w-3xl mx-auto leading-relaxed">
               A complete deployment with clear ownership, strong security posture, and full operational readiness.
             </p>
           </motion.div>
@@ -254,8 +284,8 @@ const XenBuildsPage = () => {
                   {String(idx + 1).padStart(2, '0')}
                 </div>
                 <div className="relative">
-                  <h3 className="text-lg font-semibold text-white mb-2 group-hover:text-cyan-100 transition-colors">{item.title}</h3>
-                  <p className="text-gray-300 leading-relaxed text-sm">{item.description}</p>
+                  <h3 className="text-lg font-normal text-white mb-2 group-hover:text-cyan-100 transition-colors">{item.title}</h3>
+                  <p className="text-white/40 font-normal leading-relaxed text-sm">{item.description}</p>
                 </div>
               </motion.div>
             ))}
@@ -264,10 +294,10 @@ const XenBuildsPage = () => {
       </section>
 
       {/* CTA Section */}
-      <section className="py-32 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
-        <div className="absolute inset-0">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-gradient-to-br from-blue-500/10 via-indigo-500/10 to-transparent rounded-full blur-3xl animate-pulse" />
-        </div>
+      <section className="py-32 px-4 sm:px-6 lg:px-8 relative z-10 overflow-hidden">
+        <div className="h-px bg-gradient-to-r from-transparent via-white/5 to-transparent max-w-5xl mx-auto mb-24" />
+        <div className="absolute left-1/4 top-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-blue-600/8 rounded-full blur-[100px] pointer-events-none" />
+        <div className="absolute right-1/4 top-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-indigo-600/8 rounded-full blur-[100px] pointer-events-none" />
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -275,36 +305,23 @@ const XenBuildsPage = () => {
           transition={{ duration: 0.8 }}
           className="relative z-10 max-w-4xl mx-auto text-center"
         >
-          <h2 className="text-5xl sm:text-6xl lg:text-7xl mb-8 leading-tight">
-            <span className="font-normal text-white">Ready to Deploy</span>
-            <br />
-            <span className="font-normal bg-gradient-to-r from-cyan-300 via-blue-300 to-indigo-300 bg-clip-text text-transparent">Your AI System?</span>
+          <p className="text-xs font-normal text-blue-400/80 tracking-widest uppercase mb-6">Get Started</p>
+          <h2 className="text-5xl sm:text-6xl font-normal text-white mb-6 leading-tight">
+            Ready to deploy your AI system?
           </h2>
-          <p className="text-lg sm:text-xl text-gray-300 mb-12 max-w-2xl mx-auto">
+          <div className="h-px w-16 bg-gradient-to-r from-transparent via-blue-400 to-transparent mx-auto mb-8" />
+          <p className="text-base text-white/40 font-normal mb-12 max-w-2xl mx-auto">
             Let us customize a XenBuild for your environment and launch quickly with confidence.
           </p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex justify-center">
             <motion.a
               href="/contact"
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              className="group px-10 py-5 bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 text-white text-lg font-semibold rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-xl hover:shadow-blue-500/50 transition-all overflow-hidden relative"
+              className="px-10 py-5 bg-white/5 backdrop-blur-sm text-white text-base font-normal rounded-xl border border-white/10 hover:border-white/20 hover:bg-white/8 transition-all duration-300 flex items-center gap-2"
             >
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-500 opacity-0 group-hover:opacity-20 transition-opacity" />
-              <span className="relative flex items-center gap-2">
-                Get Started
-                <svg className="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                </svg>
-              </span>
-            </motion.a>
-            <motion.a
-              href="#learn-more"
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.98 }}
-              className="px-10 py-5 border border-white/20 text-white text-lg font-semibold rounded-xl hover:bg-white/5 hover:border-white/30 transition-all"
-            >
-              Learn More
+              Contact Us
+              <ArrowRight className="w-4 h-4" />
             </motion.a>
           </div>
         </motion.div>

@@ -52,7 +52,7 @@ const TeslaNavbar = () => {
 
   const simpleLinks = [
     { name: 'About', link: '/about' },
-    { name: 'Services', link: '/services' }
+    // { name: 'Services', link: '/services' }
   ];
 
   return (

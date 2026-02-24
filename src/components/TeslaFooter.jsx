@@ -6,28 +6,19 @@ const TeslaFooter = () => {
       title: 'Services',
       links: [
         { name: 'XenPods', href: '/services/xenpods' },
-        { name: 'XenBuilds', href: '/services/xenbuilds' },
-        { name: 'AI Strategy', href: '/services/strategy' },
-        { name: 'Model Training', href: '/services/training' }
+        { name: 'XenBuilds', href: '/services/xenbuilds' }
       ]
     },
     {
       title: 'Company',
       links: [
         { name: 'About Us', href: '/about' },
-        { name: 'Research', href: '/research' },
-        { name: 'Careers', href: '/careers' },
         { name: 'Contact', href: '/contact' }
       ]
     },
     {
       title: 'Resources',
-      links: [
-        { name: 'Documentation', href: '/docs' },
-        { name: 'Case Studies', href: '/case-studies' },
-        { name: 'Blog', href: '/blog' },
-        { name: 'Support', href: '/support' }
-      ]
+      links: []
     }
   ];
 
@@ -71,14 +62,14 @@ const TeslaFooter = () => {
   ];
 
   return (
-    <footer className="bg-brand-secondary-darker text-white">
-      <div className="max-w-7xl mx-auto px-8 py-12">
+    <footer className="bg-[#080b12] text-white">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 py-12">
         {/* Main Footer Content */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12">
           {/* Brand Section */}
           <div>
-            <h3 className="text-lg font-semibold mb-4">Xendex AI</h3>
-            <p className="text-sm text-brand-gray-400 leading-relaxed">
+            <h3 className="text-2xl font-black mb-4 tracking-tight">Xendex AI</h3>
+            <p className="text-sm text-white/40 leading-relaxed">
               Transforming AI from pilots to production-grade infrastructure.
             </p>
           </div>
@@ -86,13 +77,13 @@ const TeslaFooter = () => {
           {/* Footer Sections */}
           {footerSections.map((section) => (
             <div key={section.title}>
-              <h4 className="text-sm font-semibold mb-4">{section.title}</h4>
+              <h4 className="text-base font-semibold mb-4 text-white/80 tracking-wide uppercase">{section.title}</h4>
               <ul className="space-y-2">
                 {section.links.map((link) => (
                   <li key={link.name}>
                     <a
                       href={link.href}
-                      className="text-sm text-brand-gray-400 hover:text-white transition-colors"
+                      className="text-sm text-white/60 hover:text-white transition-colors"
                     >
                       {link.name}
                     </a>
@@ -104,12 +95,12 @@ const TeslaFooter = () => {
         </div>
 
         {/* Social Media Icons */}
-        <div className="flex items-center justify-center space-x-6 mb-8 pt-8 border-t border-brand-gray-800">
+        <div className="flex items-center justify-center space-x-6 mb-8 pt-8 border-t border-white/10">
           {socialLinks.map((social) => (
             <a
               key={social.name}
               href={social.href}
-              className="text-brand-gray-400 hover:text-white transition-colors transform hover:scale-110 duration-200"
+              className="text-white/40 hover:text-white transition-colors transform hover:scale-110 duration-200"
               aria-label={social.name}
             >
               {social.icon}
@@ -118,7 +109,7 @@ const TeslaFooter = () => {
         </div>
 
         {/* Bottom Section */}
-        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-brand-gray-800 text-sm text-brand-gray-400">
+        <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-white/10 text-sm text-white/40">
           <p>© 2026 Xendex AI. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
             <a href="/privacy" className="hover:text-white transition-colors">
