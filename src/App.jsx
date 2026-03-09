@@ -15,6 +15,7 @@ import FundamentalAnalysisPage from './pages/FundamentalAnalysisPage';
 import XenPodsPage from './pages/XenPodsPage';
 import XenBuildsPage from './pages/XenBuildsPage';
 import ContactPage from './pages/ContactPage';
+import QueryVaultPage from './pages/QueryVaultPage';
 
 function AnimatedRoutes() {
   const location = useLocation();
@@ -24,6 +25,7 @@ function AnimatedRoutes() {
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/query-vault" element={<QueryVaultPage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/services/xenpods" element={<XenPodsPage />} />
         <Route path="/services/xenbuilds" element={<XenBuildsPage />} />
