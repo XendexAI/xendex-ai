@@ -52,6 +52,7 @@ const TeslaNavbar = () => {
 
   const simpleLinks = [
     { name: 'About', link: '/about' },
+    { name: 'Query Vault', link: '/query-vault' },
     // { name: 'Services', link: '/services' }
   ];
 
